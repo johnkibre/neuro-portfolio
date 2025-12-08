@@ -53,7 +53,7 @@ Switch between:
 
 ## 🚀 Usage
 
-**🌐 Live Site:** https://johnkibre.github.io/-neuro-portfolio/
+**🌐 Live Site:** https://johnkibre.github.io/neuro-portfolio/
 
 Or run locally:
 ```bash
