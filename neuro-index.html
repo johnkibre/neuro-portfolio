@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="digital-mode" data-neural-state="active">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yohannes Kibrekidusan | Neural Architecture Interface</title>
+    
+    <!-- Neuro-Meta Protocol -->
+    <meta name="description" content="Hardware/Software Hybrid Interface - Full-Stack Developer & AI Engineer with Electrical Engineering Core">
+    <meta name="neural-signature" content="ECE-AI-FULLSTACK-ETHIOPIA">
+    
+    <!-- Quantum Preconnections -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <!-- Typography: Fira Code + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Three.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    
+    <!-- MathJax for Fourier Transforms -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="neuro-style.css">
+</head>
+<body>
+    <!-- Neuro Boot Sequence -->
+    <div class="neuro-boot" id="neuroBoot">
+        <div class="boot-sequence">
+            <div class="boot-line">> INITIALIZING NEURAL INTERFACE...</div>
+            <div class="boot-line">> LOADING KIBREKIDUSAN ARCHITECTURE</div>
+            <div class="boot-line">> HARDWARE: ECE CORE DETECTED</div>
+            <div class="boot-line">> SOFTWARE: FULL-STACK PROTOCOLS LOADED</div>
+            <div class="boot-line">> AI: HARVARD/GOOGLE MODULES ACTIVE</div>
+            <div class="boot-line">> SYNTHESIZING HYBRID ARCHITECTURE...</div>
+            <div class="boot-line">> WELCOME, OPERATOR</div>
+        </div>
+    </div>
+
+    <!-- Neural Navigation -->
+    <nav class="neural-nav">
+        <div class="nav-container">
+            <div class="neural-signature">
+                <span class="signature-hex">YK</span>
+                <span class="signature-label">
+                    <span class="hardware-tag">ECE</span>
+                    <span class="software-tag">FULL-STACK</span>
+                    <span class="ai-tag">AI/ML</span>
+                </span>
+            </div>
+            
+            <div class="nav-pathways">
+                <a href="#hero" class="nav-node active" data-node-type="core">
+                    <span class="node-label">CORE</span>
+                    <span class="node-status"></span>
+                </a>
+                <a href="#skills" class="nav-node" data-node-type="matrix">
+                    <span class="node-label">MATRIX</span>
+                    <span class="node-status"></span>
+                </a>
+                <a href="#projects" class="nav-node" data-node-type="registers">
+                    <span class="node-label">REGISTERS</span>
+                    <span class="node-status"></span>
+                </a>
+                <a href="#contact" class="nav-node" data-node-type="comms">
+                    <span class="node-label">COMMS</span>
+                    <span class="node-status"></span>
+                </a>
+            </div>
+            
+            <div class="mode-toggle">
+                <button class="acdc-switch" id="acdcSwitch">
+                    <span class="mode-label">DIGITAL</span>
+                    <div class="switch-slider">
+                        <div class="switch-nob"></div>
+                    </div>
+                    <span class="mode-label">ANALOG</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PHASE 2: The Hero Section (Exploded Cube) -->
+    <section class="hero-circuit" id="hero">
+        <div class="circuit-container">
+            <div class="three-canvas" id="threeContainer"></div>
+            
+            <div class="hero-overlay">
+                <div class="architecture-label">
+                    <span class="layer-chip layer-frontend">FRONTEND</span>
+                    <span class="layer-chip layer-backend">BACKEND</span>
+                    <span class="layer-chip layer-hardware">ECE CORE</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-vector">YOHANNES</span>
+                    <span class="title-vector">KIBREKIDUSAN</span>
+                </h1>
+                
+                <div class="hero-subtitle">
+                    <span class="subtitle-component" data-component="hardware">HARDWARE ARCHITECT</span>
+                    <span class="subtitle-divider">|</span>
+                    <span class="subtitle-component" data-component="software">FULL-STACK ENGINEER</span>
+                    <span class="subtitle-divider">|</span>
+                    <span class="subtitle-component" data-component="ai">NEURAL NETWORK DESIGNER</span>
+                </div>
+                
+                <div class="hero-description">
+                    <p class="description-line">
+                        <span class="description-prefix">> ARCHITECTURE:</span>
+                        <span class="description-text">Ethiopian-born hardware/software hybrid with 5+ years neural training</span>
+                    </p>
+                    <p class="description-line">
+                        <span class="description-prefix">> CORE:</span>
+                        <span class="description-text">Electrical Engineering processor @ Addis Ababa University</span>
+                    </p>
+                    <p class="description-line">
+                        <span class="description-prefix">> SOFTWARE LOADED:</span>
+                        <span class="description-text">MERN stack, Python AI, Unity VR, Video Editing modules</span>
+                    </p>
+                </div>
+                
+                <div class="cube-controls">
+                    <button class="control-btn" id="zoomToHardware">
+                        <span class="control-icon">⚡</span>
+                        <span class="control-label">ZOOM TO HARDWARE</span>
+                    </button>
+                    <button class="control-btn" id="rotateCube">
+                        <span class="control-icon">🔄</span>
+                        <span class="control-label">ROTATE</span>
+                    </button>
+                    <button class="control-btn" id="explodeCube">
+                        <span class="control-icon">💥</span>
+                        <span class="control-label">EXPLODE</span>
+                    </button>
+                </div>
+                
+                <div class="neuro-stats">
+                    <div class="stat-register">
+                        <div class="stat-value" data-target="4">0</div>
+                        <div class="stat-label">PROJECTS</div>
+                    </div>
+                    <div class="stat-register">
+                        <div class="stat-value" data-target="5">0</div>
+                        <div class="stat-label">YEARS</div>
+                    </div>
+                    <div class="stat-register">
+                        <div class="stat-value" data-target="15">0</div>
+                        <div class="stat-label">MODULES</div>
+                    </div>
+                    <div class="stat-register">
+                        <div class="stat-value" id="clockSpeed">3.2</div>
+                        <div class="stat-label">GHz CLOCK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Matrix Section -->
+    <section class="skills-matrix" id="skills">
+        <div class="container">
+            <h2 class="section-title">// SKILL MATRIX</h2>
+            <div class="skills-grid">
+                <div class="skill-gate">
+                    <h3><i class="fas fa-desktop"></i> Frontend</h3>
+                    <ul>
+                        <li>React & Redux</li>
+                        <li>HTML5/CSS3/JS</li>
+                        <li>Three.js</li>
+                        <li>Responsive Design</li>
+                        <li>UI/UX Principles</li>
+                    </ul>
+                </div>
+                <div class="skill-gate">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <ul>
+                        <li>Node.js & Express</li>
+                        <li>MongoDB & SQL</li>
+                        <li>REST APIs</li>
+                        <li>Authentication</li>
+                        <li>Cloud Deploy</li>
+                    </ul>
+                </div>
+                <div class="skill-gate hardware-gate">
+                    <h3><i class="fas fa-microchip"></i> Hardware/ECE</h3>
+                    <ul>
+                        <li>C/C++ Embedded</li>
+                        <li>Arduino/Raspberry Pi</li>
+                        <li>Circuit Design</li>
+                        <li>Signal Processing</li>
+                        <li>IoT Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-gate">
+                    <h3><i class="fas fa-brain"></i> AI/ML</h3>
+                    <ul>
+                        <li>Python & TensorFlow</li>
+                        <li>OCR Processing</li>
+                        <li>Data Analysis</li>
+                        <li>Neural Networks</li>
+                        <li>Computer Vision</li>
+                    </ul>
+                </div>
+                <div class="skill-gate">
+                    <h3><i class="fas fa-tools"></i> DevOps</h3>
+                    <ul>
+                        <li>Git/GitHub</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Docker Basics</li>
+                        <li>Linux/Bash</li>
+                        <li>Testing & Debug</li>
+                    </ul>
+                </div>
+                <div class="skill-gate">
+                    <h3><i class="fas fa-video"></i> Multimedia</h3>
+                    <ul>
+                        <li>Video Editing</li>
+                        <li>Unity/VR</li>
+                        <li>3D Modeling</li>
+                        <li>Audio Processing</li>
+                        <li>Content Creation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">// PROJECT REGISTERS</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-preview">
+                        <img src="assets/images/Ethiopia tourism.png" alt="Ethiopia Tourism Platform">
+                    </div>
+                    <div class="project-info">
+                        <h3>Ethiopia Tourism Platform</h3>
+                        <div class="project-tags">
+                            <span class="tag">MERN Stack</span>
+                            <span class="tag">REST API</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <p>Full-stack web application showcasing Ethiopian cultural heritage with database integration, user authentication, and dynamic content management.</p>
+                        <a href="https://johnkibre.github.io/ethiopia-tourism" target="_blank" class="btn btn-secondary">View Live →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-preview">
+                        <img src="assets/images/ocr1.png" alt="OCR Accessibility App">
+                    </div>
+                    <div class="project-info">
+                        <h3>OCR Accessibility App</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">Tesseract</span>
+                            <span class="tag hardware">AI/ML</span>
+                        </div>
+                        <p>AI-powered solution converting printed text to audio for visually impaired users. 100% voice-controlled with multilingual support.</p>
+                        <a href="https://github.com/johnkibre/ocr" target="_blank" class="btn btn-secondary">View Code →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-preview">
+                        <img src="assets/images/HRP 1.png" alt="HR Planning System">
+                    </div>
+                    <div class="project-info">
+                        <h3>HR Gap Analysis Tool</h3>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">PWA</span>
+                            <span class="tag">Analytics</span>
+                            <span class="tag hardware">Offline-First</span>
+                        </div>
+                        <p>Enterprise workforce planning tool with AI-powered recommendations, scenario planning, and offline capabilities.</p>
+                        <a href="https://github.com/johnkibre/HR-gap-analysis" target="_blank" class="btn btn-secondary">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Terminal Section -->
+    <section class="contact-terminal" id="contact">
+        <div class="container">
+            <h2 class="section-title">// UART COMMS</h2>
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-button"></div>
+                    <div class="terminal-button"></div>
+                    <div class="terminal-button"></div>
+                </div>
+                <div class="terminal-content">
+                    <div class="terminal-line">$ uart_handshake --protocol=contact</div>
+                    <div class="terminal-line">> Establishing connection...</div>
+                    <div class="terminal-line">> Status: READY</div>
+                    <div class="terminal-line" style="margin-top: 1rem;">> Enter Sender Name:
+                        <input type="text" class="terminal-input" placeholder="John Doe" id="senderName">
+                    </div>
+                    <div class="terminal-line">> Enter Email Address:
+                        <input type="email" class="terminal-input" placeholder="john@example.com" id="senderEmail">
+                    </div>
+                    <div class="terminal-line">> Enter Payload (Message):
+                        <textarea class="terminal-input" placeholder="Let's build something amazing..." id="senderMessage" rows="3"></textarea>
+                    </div>
+                    <div class="terminal-line" style="margin-top: 1rem;">
+                        <button class="terminal-submit" onclick="sendTerminalMessage()">TRANSMIT</button>
+                    </div>
+                    <div id="terminalResponse" class="terminal-line" style="margin-top: 1rem; color: var(--hardware-amber);"></div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>jhonkibre0912@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/johnkibre" target="_blank">github.com/johnkibre</a>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/yohannes-kibrekidusan" target="_blank">linkedin.com/in/yohannes-kibrekidusan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRT Overlay (Hidden by default) -->
+    <div class="crt-overlay" id="crtOverlay">
+        <div class="crt-scanlines"></div>
+        <div class="crt-flicker"></div>
+        <div class="crt-curvature"></div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="three-core.js"></script>
+    <script src="neuro-script.js"></script>
+    
+    <!-- Inline Boot Sequence -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bootLines = document.querySelectorAll('.boot-line');
+            let delay = 0;
+            
+            bootLines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.animationDelay = `${delay}s`;
+                    line.style.opacity = '1';
+                    delay += 0.5;
+                    
+                    if (index === bootLines.length - 1) {
+                        setTimeout(() => {
+                            document.getElementById('neuroBoot').style.opacity = '0';
+                            setTimeout(() => {
+                                document.getElementById('neuroBoot').style.display = 'none';
+                            }, 500);
+                        }, 1000);
+                    }
+                }, index * 500);
+            });
+        });
+    </script>
+</body>
+</html>
