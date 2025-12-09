@@ -252,6 +252,33 @@ body.analog-mode .switch-nob {
     margin-top: 2rem;
 }
 
+.profile-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--electric-cyan);
+    box-shadow: 0 0 30px rgba(100,255,218,0.5);
+    object-fit: cover;
+    animation: profileGlow 3s ease-in-out infinite;
+}
+
+@keyframes profileGlow {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(100,255,218,0.5);
+        border-color: var(--electric-cyan);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255,183,0,0.6);
+        border-color: var(--hardware-amber);
+    }
+}
+
 .architecture-label {
     display: flex;
     gap: 1rem;
@@ -457,7 +484,23 @@ body.analog-mode * {
     .hero-title { font-size: 2rem; }
     .neuro-stats { grid-template-columns: repeat(2, 1fr); }
     .cube-controls { flex-direction: column; }
-    .nav-pathways { flex-wrap: wrap; gap: 1rem; }
+    .nav-pathways { display: none; }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .mode-toggle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .acdc-switch {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Skills Matrix */
