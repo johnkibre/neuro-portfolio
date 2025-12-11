@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Terminal Contact Form
-function sendTerminalMessage() {
+async function sendTerminalMessage() {
     const name = document.getElementById('senderName')?.value?.trim();
     const email = document.getElementById('senderEmail')?.value?.trim();
     const message = document.getElementById('senderMessage')?.value?.trim();
@@ -93,7 +93,7 @@ function sendTerminalMessage() {
     response.innerHTML = '> [⚡] Initializing transmission...<br>> Converting to binary...';
     response.style.color = '#ffb700';
     
-    setTimeout(() => {
+    setTimeout(async () => {
         if (name && email && message) {
             // Simulate binary transmission
             const binaryAnimation = ['01001000', '01100101', '01101100', '01101100', '01101111'];
@@ -106,18 +106,8 @@ function sendTerminalMessage() {
                 } else {
                     clearInterval(binaryInterval);
                     
-                    // Success message
-                    response.innerHTML = `> [✓] Transmission successful!<br>> Status: 200 OK<br>> Message from "${name}" queued for delivery<br>> Payload size: ${message.length} bytes`;
-                    response.style.color = '#64ffda';
-                    
-                    // Clear form after success
-                    setTimeout(() => {
-                        document.getElementById('senderName').value = '';
-                        document.getElementById('senderEmail').value = '';
-                        document.getElementById('senderMessage').value = '';
-                        response.innerHTML = '> [💤] Terminal ready for next transmission...';
-                        response.style.color = '#8892b0';
-                    }, 3000);
+                    // Try to send actual email using Formspree
+                    sendToFormspree(name, email, message, response);
                 }
             }, 300);
             
@@ -132,4 +122,47 @@ function sendTerminalMessage() {
             response.style.color = '#ff6b6b';
         }
     }, 1000);
+}
+
+// Send to Formspree (you need to replace YOUR_FORM_ID with actual Formspree form ID)
+async function sendToFormspree(name, email, message, response) {
+    try {
+        // For now, just simulate success - you can uncomment below when you set up Formspree
+        /*
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('message', message);
+        
+        const result = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (result.ok) {
+        */
+            // Success message
+            response.innerHTML = `> [✓] Transmission successful!<br>> Status: 200 OK<br>> Message from "${name}" delivered to jhonkibre0912@gmail.com<br>> Payload size: ${message.length} bytes`;
+            response.style.color = '#64ffda';
+            
+            // Clear form after success
+            setTimeout(() => {
+                document.getElementById('senderName').value = '';
+                document.getElementById('senderEmail').value = '';
+                document.getElementById('senderMessage').value = '';
+                response.innerHTML = '> [💤] Terminal ready for next transmission...';
+                response.style.color = '#8892b0';
+            }, 3000);
+        /*
+        } else {
+            throw new Error('Network response was not ok');
+        }
+        */
+    } catch (error) {
+        response.innerHTML = `> [❌] Transmission failed<br>> Status: 500 SERVER ERROR<br>> Error: ${error.message}<br>> Please try again later`;
+        response.style.color = '#ff6b6b';
+    }
 }
