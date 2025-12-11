@@ -585,6 +585,116 @@ body.analog-mode * {
     color: var(--hardware-amber);
 }
 
+/* Certificates Section */
+.certificates-section {
+    padding: 6rem 2rem;
+    background: rgba(0,0,0,0.2);
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certificate-card {
+    background: rgba(10,25,47,0.8);
+    border: 1px solid rgba(100,255,218,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--electric-cyan);
+    box-shadow: 0 15px 50px rgba(100,255,218,0.3);
+}
+
+.certificate-image {
+    height: 200px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.certificate-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.certificate-card:hover .certificate-image img {
+    transform: scale(1.05);
+}
+
+.certificate-info {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-info h3 {
+    color: var(--electric-cyan);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+}
+
+.certificate-issuer {
+    color: var(--hardware-amber);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.certificate-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.cert-tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(100,255,218,0.1);
+    border: 1px solid var(--electric-cyan);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--electric-cyan);
+}
+
+.cert-tag.ai {
+    border-color: var(--silicon-purple);
+    color: var(--silicon-purple);
+    background: rgba(138,43,226,0.1);
+}
+
+.cert-tag.hardware {
+    border-color: var(--hardware-amber);
+    color: var(--hardware-amber);
+    background: rgba(255,183,0,0.1);
+}
+
+.certificate-info p {
+    line-height: 1.6;
+    color: #a8b2d1;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
 /* Projects Section */
 .projects-section {
     padding: 6rem 2rem;
