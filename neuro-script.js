@@ -79,22 +79,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Terminal Contact Form
 function sendTerminalMessage() {
-    const name = document.getElementById('senderName').value;
-    const email = document.getElementById('senderEmail').value;
-    const message = document.getElementById('senderMessage').value;
+    const name = document.getElementById('senderName')?.value?.trim();
+    const email = document.getElementById('senderEmail')?.value?.trim();
+    const message = document.getElementById('senderMessage')?.value?.trim();
     const response = document.getElementById('terminalResponse');
     
-    if (name && email && message) {
-        response.innerHTML = '> [] Transmission successful!<br>> Status: 200 OK<br>> Message queued for delivery...';
-        response.style.color = '#64ffda';
-        
-        setTimeout(() => {
-            document.getElementById('senderName').value = '';
-            document.getElementById('senderEmail').value = '';
-            document.getElementById('senderMessage').value = '';
-        }, 2000);
-    } else {
-        response.innerHTML = '> [] Error: Missing required fields<br>> Status: 400 BAD REQUEST';
-        response.style.color = '#ff6b6b';
+    if (!response) {
+        console.error('Terminal response element not found');
+        return;
     }
+    
+    // Show transmission animation
+    response.innerHTML = '> [⚡] Initializing transmission...<br>> Converting to binary...';
+    response.style.color = '#ffb700';
+    
+    setTimeout(() => {
+        if (name && email && message) {
+            // Simulate binary transmission
+            const binaryAnimation = ['01001000', '01100101', '01101100', '01101100', '01101111'];
+            let binaryIndex = 0;
+            
+            const binaryInterval = setInterval(() => {
+                if (binaryIndex < binaryAnimation.length) {
+                    response.innerHTML = `> [⚡] Transmitting: ${binaryAnimation[binaryIndex]}<br>> Status: SENDING...`;
+                    binaryIndex++;
+                } else {
+                    clearInterval(binaryInterval);
+                    
+                    // Success message
+                    response.innerHTML = `> [✓] Transmission successful!<br>> Status: 200 OK<br>> Message from "${name}" queued for delivery<br>> Payload size: ${message.length} bytes`;
+                    response.style.color = '#64ffda';
+                    
+                    // Clear form after success
+                    setTimeout(() => {
+                        document.getElementById('senderName').value = '';
+                        document.getElementById('senderEmail').value = '';
+                        document.getElementById('senderMessage').value = '';
+                        response.innerHTML = '> [💤] Terminal ready for next transmission...';
+                        response.style.color = '#8892b0';
+                    }, 3000);
+                }
+            }, 300);
+            
+        } else {
+            // Error message
+            const missingFields = [];
+            if (!name) missingFields.push('NAME');
+            if (!email) missingFields.push('EMAIL');
+            if (!message) missingFields.push('MESSAGE');
+            
+            response.innerHTML = `> [❌] Error: Missing required fields<br>> Status: 400 BAD REQUEST<br>> Missing: ${missingFields.join(', ')}<br>> Please complete all fields to transmit`;
+            response.style.color = '#ff6b6b';
+        }
+    }, 1000);
 }

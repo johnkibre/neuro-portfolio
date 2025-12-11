@@ -877,6 +877,7 @@ body.analog-mode * {
 .terminal-input {
     background: transparent;
     border: none;
+    border-bottom: 1px solid rgba(100,255,218,0.3);
     color: var(--electric-cyan);
     font-family: var(--font-mono);
     font-size: 1rem;
@@ -884,6 +885,12 @@ body.analog-mode * {
     outline: none;
     padding: 0.5rem 0;
     margin-top: 0.5rem;
+    transition: all 0.3s;
+}
+
+.terminal-input:focus {
+    border-bottom-color: var(--electric-cyan);
+    box-shadow: 0 1px 0 0 var(--electric-cyan);
 }
 
 .terminal-input::placeholder {
@@ -893,6 +900,14 @@ body.analog-mode * {
 textarea.terminal-input {
     resize: vertical;
     min-height: 80px;
+    border: 1px solid rgba(100,255,218,0.3);
+    border-radius: 4px;
+    padding: 0.75rem;
+}
+
+textarea.terminal-input:focus {
+    border-color: var(--electric-cyan);
+    box-shadow: 0 0 10px rgba(100,255,218,0.3);
 }
 
 .terminal-submit {
@@ -905,11 +920,33 @@ textarea.terminal-input {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 .terminal-submit:hover {
     box-shadow: 0 0 20px rgba(100,255,218,0.5);
     transform: translateY(-2px);
+}
+
+.terminal-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 0 30px rgba(100,255,218,0.8);
+}
+
+.terminal-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.terminal-submit:hover::before {
+    left: 100%;
 }
 
 .contact-info {
