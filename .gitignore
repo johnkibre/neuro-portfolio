@@ -1,0 +1,9 @@
+# Exclude markdown files
+*.md
+
+# Keep only the main portfolio files
+# index.html
+# neuro-style.css
+# neuro-script.js
+# three-core.js
+# assets/
