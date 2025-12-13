@@ -38,6 +38,8 @@
             color: #e6f1ff;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            padding-top: 0 !important;
+            margin-top: 0 !important;
         }
         
         /* Accessibility: Respect reduced motion */
@@ -88,6 +90,7 @@
             border-bottom: 1px solid rgba(100,255,218,0.1);
             z-index: 1000;
             padding: 1rem 0;
+            height: 80px;
         }
         
         /* Skip to main content for accessibility */
@@ -110,10 +113,13 @@
         
         /* Emergency layout fixes */
         .hero-circuit {
-            margin-top: 80px !important;
+            margin-top: 120px !important;
+            padding-top: 60px !important;
             min-height: calc(100vh - 80px) !important;
             display: flex !important;
-            align-items: center !important;
+            align-items: flex-start !important;
+            position: relative !important;
+            top: 0 !important;
         }
         
         .hero-overlay {
@@ -219,11 +225,11 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <section class="hero-circuit" id="hero" aria-labelledby="hero-title" style="margin-top: 80px !important; padding-top: 2rem !important;">
-            <div class="circuit-container" style="margin-top: 0 !important; padding-top: 2rem !important;">
+        <section class="hero-circuit" id="hero" aria-labelledby="hero-title" style="margin-top: 120px !important; padding-top: 4rem !important; position: relative !important; top: 0 !important;">
+            <div class="circuit-container" style="margin-top: 0 !important; padding-top: 3rem !important; position: relative !important;">
                 <div class="three-canvas" id="threeContainer" aria-hidden="true"></div>
                 
-                <div class="hero-overlay" style="position: relative !important; z-index: 10 !important; margin-top: 2rem !important;">
+                <div class="hero-overlay" style="position: relative !important; z-index: 10 !important; margin-top: 3rem !important; top: 0 !important;">
                     <div class="profile-section">
                         <img src="assets/images/profile.jpg?t=20241213" 
                              alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
@@ -766,12 +772,22 @@
                 }, 500);
             }
             
-            // Emergency: Scroll to hero section if elements are hidden above
+            // Debug: Check positioning
             setTimeout(() => {
                 const heroSection = document.getElementById('hero');
                 if (heroSection) {
-                    console.log('📍 Scrolling to hero section...');
-                    heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const rect = heroSection.getBoundingClientRect();
+                    console.log('📍 Hero section position:', {
+                        top: rect.top,
+                        bottom: rect.bottom,
+                        height: rect.height
+                    });
+                    
+                    // Only scroll if hero is above viewport
+                    if (rect.top < 0) {
+                        console.log('🔧 Hero is above viewport, scrolling...');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 }
             }, 1000);
         });
