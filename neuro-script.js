@@ -17,6 +17,7 @@ class NeuralInterface {
         this.initPerformanceOptimizations();
         this.initAccessibilityFeatures();
         this.initButtonFixes();
+        this.init3DControls();
     }
     
     // Fix button click issues
@@ -1372,3 +1373,102 @@ window.addEventListener('load', () => {
         }
     }, 1500);
 });
+
+// Add 3D controls integration to NeuralInterface class
+NeuralInterface.prototype.init3DControls = function() {
+    console.log('🎮 Initializing 3D controls integration...');
+    
+    // Wait for Three.js to be ready
+    setTimeout(() => {
+        this.setup3DControlsEnhancement();
+    }, 1000);
+    
+    // Also setup on window load as backup
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            this.setup3DControlsEnhancement();
+        }, 2000);
+    });
+};
+
+NeuralInterface.prototype.setup3DControlsEnhancement = function() {
+    const controlButtons = document.querySelectorAll('.control-btn');
+    
+    if (controlButtons.length === 0) {
+        console.log('⚠️ No 3D control buttons found');
+        return;
+    }
+    
+    console.log(`🎮 Found ${controlButtons.length} 3D control buttons`);
+    
+    controlButtons.forEach((button, index) => {
+        console.log(`🎮 Enhancing button ${index + 1}: ${button.id}`);
+        
+        // Ensure buttons are clickable on mobile
+        button.style.cssText += `
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            z-index: 1000 !important;
+            position: relative !important;
+        `;
+        
+        // Add mobile-specific enhancements
+        this.enhance3DButton(button);
+    });
+    
+    // Force Three.js initialization if not already done
+    if (typeof window.initThreeJS === 'function' && !window.threeJSInitialized) {
+        console.log('🎯 Force initializing Three.js...');
+        window.initThreeJS();
+        window.threeJSInitialized = true;
+    }
+    
+    console.log('✅ 3D controls enhancement complete');
+};
+
+NeuralInterface.prototype.enhance3DButton = function(button) {
+    // Add visual feedback for all interactions
+    const addFeedback = (type) => {
+        button.style.transform = 'scale(0.95)';
+        button.style.background = 'rgba(100, 255, 218, 0.3)';
+        button.style.borderColor = '#64ffda';
+        
+        setTimeout(() => {
+            button.style.transform = '';
+            button.style.background = '';
+            button.style.borderColor = '';
+        }, 200);
+        
+        console.log(`🎮 3D Button ${button.id} activated via ${type}`);
+    };
+    
+    // Enhanced touch support
+    button.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        button.style.background = 'rgba(100, 255, 218, 0.2)';
+    }, { passive: false });
+    
+    button.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        addFeedback('touch');
+    }, { passive: false });
+    
+    // Enhanced click support
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addFeedback('click');
+    });
+    
+    // Keyboard support
+    button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            addFeedback('keyboard');
+        }
+    });
+};

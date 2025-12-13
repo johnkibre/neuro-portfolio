@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Layout Test</title>
+    <style>
+        body {
+            background: #0a192f;
+            color: #e6f1ff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .test-container {
+            max-width: 400px;
+            margin: 0 auto;
+            border: 2px solid #64ffda;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #64ffda;
+            object-fit: cover;
+            background: rgba(100, 255, 218, 0.1);
+        }
+        
+        .profile-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .hero-title {
+            font-size: 1.8rem;
+            color: #64ffda;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .btn-test {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: rgba(100, 255, 218, 0.05);
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px;
+            cursor: pointer;
+            min-height: 44px;
+            font-weight: 600;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3);
+        }
+        
+        .btn-test:hover,
+        .btn-test:active {
+            background: rgba(100, 255, 218, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Mobile Layout Test</h1>
+        
+        <div class="profile-header">
+            <div class="profile-section">
+                <img src="assets/images/profile.jpg" 
+                     alt="Profile Test" 
+                     class="profile-image"
+                     onload="console.log('✅ Profile loaded');"
+                     onerror="console.error('❌ Profile failed'); this.style.background='#ff0000';">
+            </div>
+            
+            <div class="profile-text">
+                <h2 class="hero-title">YOHANNES KIBREKIDUSAN</h2>
+                <p>Hardware/Software Engineer</p>
+            </div>
+        </div>
+        
+        <h3>Button Tests</h3>
+        <a href="https://github.com/johnkibre/ocr" 
+           target="_blank" 
+           class="btn-test" 
+           id="ocrBtn">
+            OCR Repository →
+        </a>
+        
+        <a href="https://github.com/johnkibre/ethiopia-tourism" 
+           target="_blank" 
+           class="btn-test">
+            Tourism Project →
+        </a>
+        
+        <div class="status" id="status">
+            <h4>Test Status:</h4>
+            <div id="results"></div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('📱 Mobile test starting...');
+        
+        const results = document.getElementById('results');
+        
+        function addResult(message, isError = false) {
+            const div = document.createElement('div');
+            div.style.color = isError ? '#ff6b6b' : '#64ffda';
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        // Test viewport
+        addResult(`📱 Viewport: ${window.innerWidth}x${window.innerHeight}`);
+        addResult(`📱 Is Mobile: ${window.innerWidth < 768 ? 'YES' : 'NO'}`);
+        
+        // Test profile layout
+        const profileHeader = document.querySelector('.profile-header');
+        if (profileHeader) {
+            const style = getComputedStyle(profileHeader);
+            addResult(`📦 Profile flex-direction: ${style.flexDirection}`);
+            addResult(`📦 Profile align-items: ${style.alignItems}`);
+        }
+        
+        // Test OCR button
+        const ocrBtn = document.getElementById('ocrBtn');
+        if (ocrBtn) {
+            addResult('✅ OCR button found');
+            
+            ocrBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                addResult('🔗 OCR button clicked - would open GitHub');
+                
+                // Visual feedback
+                ocrBtn.textContent = 'Opening...';
+                ocrBtn.style.background = 'rgba(100, 255, 218, 0.3)';
+                
+                setTimeout(() => {
+                    ocrBtn.textContent = 'OCR Repository →';
+                    ocrBtn.style.background = 'rgba(100, 255, 218, 0.05)';
+                }, 1500);
+            });
+        }
+        
+        // Test touch events
+        document.addEventListener('touchstart', () => {
+            addResult('👆 Touch events working');
+        }, { once: true });
+        
+        addResult('🏁 Mobile test ready');
+    </script>
+</body>
+</html>

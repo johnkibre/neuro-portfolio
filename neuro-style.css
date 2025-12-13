@@ -1734,6 +1734,30 @@ body.analog-mode * {
         align-items: center;
     }
     
+    /* 3D Control Buttons - Mobile Enhanced */
+    .control-btn {
+        min-height: 48px !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 1000 !important;
+        position: relative !important;
+        background: rgba(100, 255, 218, 0.1) !important;
+        border: 2px solid var(--electric-cyan) !important;
+        border-radius: 8px !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .control-btn:active {
+        transform: scale(0.95) !important;
+        background: rgba(100, 255, 218, 0.3) !important;
+    }
+    
     /* Project Cards */
     .project-card {
         grid-template-columns: 1fr;
