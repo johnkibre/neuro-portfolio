@@ -10,6 +10,11 @@
     <meta name="neural-signature" content="ECE-AI-FULLSTACK-ETHIOPIA">
     <meta name="theme-color" content="#0a192f">
     
+    <!-- Prevent caching issues -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <!-- Critical CSS Inlined for Above-the-Fold -->
     <style>
         /* Critical CSS for instant rendering */
@@ -106,8 +111,8 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="assets/images/profile.jpg?v=3" as="image" type="image/jpeg">
-    <link rel="preload" href="neuro-style.css?v=3" as="style">
+    <link rel="preload" href="assets/images/profile.jpg?v=4" as="image" type="image/jpeg">
+    <link rel="preload" href="neuro-style.css?v=4" as="style">
     
     <!-- Typography with display=swap for performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -116,7 +121,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="neuro-style.css?v=3">
+    <link rel="stylesheet" href="neuro-style.css?v=4">
     
     <!-- Deferred JavaScript for performance -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
@@ -196,11 +201,12 @@
                 
                 <div class="hero-overlay">
                     <div class="profile-section">
-                        <img src="assets/images/profile.jpg?v=3" 
+                        <img src="assets/images/profile.jpg?v=4" 
                              alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
                              class="profile-image"
                              width="150" 
-                             height="150">
+                             height="150"
+                             onerror="console.error('Profile image failed to load:', this.src)">
                     </div>
                     
                     <div class="architecture-label" role="list" aria-label="Technical specializations">
@@ -630,13 +636,17 @@
     </div>
 
     <!-- Deferred JavaScript for optimal performance -->
-    <script src="three-core.js?v=3" defer></script>
-    <script src="neuro-script.js?v=3" defer></script>
+    <script src="three-core.js?v=4" defer></script>
+    <script src="neuro-script.js?v=4" defer></script>
     
     <!-- Inline critical JavaScript -->
     <script>
+        // Debug logging
+        console.log('🚀 Neural Portfolio Loading...');
+        
         // Boot sequence with performance optimization
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ DOM Content Loaded');
             const bootLines = document.querySelectorAll('.boot-line');
             let delay = 0;
             
@@ -682,6 +692,20 @@
                 document.querySelectorAll('.reveal-section').forEach(section => {
                     observer.observe(section);
                 });
+            }
+            
+            // Debug: Check if critical elements exist
+            const profileImg = document.querySelector('.profile-image');
+            const heroTitle = document.querySelector('.hero-title');
+            const threeContainer = document.getElementById('threeContainer');
+            
+            console.log('Profile Image:', profileImg ? '✅ Found' : '❌ Missing');
+            console.log('Hero Title:', heroTitle ? '✅ Found' : '❌ Missing');
+            console.log('Three.js Container:', threeContainer ? '✅ Found' : '❌ Missing');
+            
+            if (profileImg) {
+                profileImg.onload = () => console.log('✅ Profile image loaded successfully');
+                profileImg.onerror = () => console.error('❌ Profile image failed to load');
             }
         });
         
