@@ -5,33 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yohannes Kibrekidusan | Neural Architecture Interface</title>
     
-    <!-- Neuro-Meta Protocol -->
+    <!-- Performance & SEO Meta -->
     <meta name="description" content="Hardware/Software Hybrid Interface - Full-Stack Developer & AI Engineer with Electrical Engineering Core">
     <meta name="neural-signature" content="ECE-AI-FULLSTACK-ETHIOPIA">
+    <meta name="theme-color" content="#0a192f">
     
-    <!-- Quantum Preconnections -->
+    <!-- Critical CSS Inlined for Above-the-Fold -->
+    <style>
+        /* Critical CSS for instant rendering */
+        :root {
+            --midnight-deep: #0a192f;
+            --electric-cyan: #64ffda;
+            --hardware-amber: #ffb700;
+            --silicon-purple: #8a2be2;
+            --font-mono: "Fira Code", "Courier New", monospace;
+            --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--midnight-deep);
+            color: #e6f1ff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Accessibility: Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        /* Boot sequence - critical for first paint */
+        .neuro-boot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--midnight-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            font-family: var(--font-mono);
+        }
+        
+        .boot-sequence {
+            color: var(--electric-cyan);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .boot-line {
+            opacity: 0;
+            animation: typewriter 0.5s forwards;
+        }
+        
+        @keyframes typewriter {
+            to { opacity: 1; }
+        }
+        
+        /* Navigation - critical for above fold */
+        .neural-nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            background: rgba(10,25,47,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100,255,218,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        /* Skip to main content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--electric-cyan);
+            color: var(--midnight-deep);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            z-index: 10000;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+    </style>
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
-    <!-- Typography: Fira Code + Inter -->
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/images/profile.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="neuro-style.css" as="style">
+    
+    <!-- Typography with display=swap for performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome with defer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
     
-    <!-- Three.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    
-    <!-- MathJax for Fourier Transforms -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <!-- CSS -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="neuro-style.css">
+    
+    <!-- Deferred JavaScript for performance -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Neuro Boot Sequence -->
-    <div class="neuro-boot" id="neuroBoot">
+    <div class="neuro-boot" id="neuroBoot" aria-hidden="true">
         <div class="boot-sequence">
             <div class="boot-line">> INITIALIZING NEURAL INTERFACE...</div>
             <div class="boot-line">> LOADING KIBREKIDUSAN ARCHITECTURE</div>
@@ -44,10 +141,10 @@
     </div>
 
     <!-- Neural Navigation -->
-    <nav class="neural-nav">
+    <nav class="neural-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="neural-signature">
-                <span class="signature-hex">YK</span>
+                <span class="signature-hex" aria-label="Yohannes Kibrekidusan initials">YK</span>
                 <span class="signature-label">
                     <span class="hardware-tag">ECE</span>
                     <span class="software-tag">FULL-STACK</span>
@@ -56,32 +153,32 @@
             </div>
             
             <div class="nav-pathways">
-                <a href="#hero" class="nav-node active" data-node-type="core">
+                <a href="#hero" class="nav-node active" data-node-type="core" aria-current="page">
                     <span class="node-label">CORE</span>
-                    <span class="node-status"></span>
+                    <span class="node-status" aria-hidden="true"></span>
                 </a>
                 <a href="#skills" class="nav-node" data-node-type="matrix">
                     <span class="node-label">MATRIX</span>
-                    <span class="node-status"></span>
+                    <span class="node-status" aria-hidden="true"></span>
                 </a>
                 <a href="#certificates" class="nav-node" data-node-type="certs">
                     <span class="node-label">CERTS</span>
-                    <span class="node-status"></span>
+                    <span class="node-status" aria-hidden="true"></span>
                 </a>
                 <a href="#projects" class="nav-node" data-node-type="registers">
                     <span class="node-label">REGISTERS</span>
-                    <span class="node-status"></span>
+                    <span class="node-status" aria-hidden="true"></span>
                 </a>
                 <a href="#contact" class="nav-node" data-node-type="comms">
                     <span class="node-label">COMMS</span>
-                    <span class="node-status"></span>
+                    <span class="node-status" aria-hidden="true"></span>
                 </a>
             </div>
             
             <div class="mode-toggle">
-                <button class="acdc-switch" id="acdcSwitch">
+                <button class="acdc-switch" id="acdcSwitch" aria-label="Toggle between digital and analog display modes">
                     <span class="mode-label">DIGITAL</span>
-                    <div class="switch-slider">
+                    <div class="switch-slider" aria-hidden="true">
                         <div class="switch-nob"></div>
                     </div>
                     <span class="mode-label">ANALOG</span>
@@ -90,372 +187,542 @@
         </div>
     </nav>
 
-    <!-- PHASE 2: The Hero Section (Exploded Cube) -->
-    <section class="hero-circuit" id="hero">
-        <div class="circuit-container">
-            <div class="three-canvas" id="threeContainer"></div>
-            
-            <div class="hero-overlay">
-                <div class="profile-section">
-                    <img src="assets/images/profile.jpg" alt="Yohannes Kibrekidusan" class="profile-image">
-                </div>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-circuit" id="hero" aria-labelledby="hero-title">
+            <div class="circuit-container">
+                <div class="three-canvas" id="threeContainer" aria-hidden="true"></div>
                 
-                <div class="architecture-label">
-                    <span class="layer-chip layer-frontend">FRONTEND</span>
-                    <span class="layer-chip layer-backend">BACKEND</span>
-                    <span class="layer-chip layer-hardware">ECE CORE</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span class="title-vector">YOHANNES</span>
-                    <span class="title-vector">KIBREKIDUSAN</span>
-                </h1>
-                
-                <div class="hero-subtitle">
-                    <span class="subtitle-component" data-component="hardware">HARDWARE ARCHITECT</span>
-                    <span class="subtitle-divider">|</span>
-                    <span class="subtitle-component" data-component="software">FULL-STACK ENGINEER</span>
-                    <span class="subtitle-divider">|</span>
-                    <span class="subtitle-component" data-component="ai">NEURAL NETWORK DESIGNER</span>
-                </div>
-                
-                <div class="hero-description">
-                    <p class="description-line">
-                        <span class="description-prefix">> ARCHITECTURE:</span>
-                        <span class="description-text">Ethiopian-born hardware/software hybrid with 5+ years neural training</span>
-                    </p>
-                    <p class="description-line">
-                        <span class="description-prefix">> CORE:</span>
-                        <span class="description-text">Electrical Engineering processor @ Addis Ababa University</span>
-                    </p>
-                    <p class="description-line">
-                        <span class="description-prefix">> SOFTWARE LOADED:</span>
-                        <span class="description-text">MERN stack, Python AI, Unity VR, Video Editing modules</span>
-                    </p>
-                </div>
-                
-                <div class="cube-controls">
-                    <button class="control-btn" id="zoomToHardware">
-                        <span class="control-icon">⚡</span>
-                        <span class="control-label">ZOOM TO HARDWARE</span>
-                    </button>
-                    <button class="control-btn" id="rotateCube">
-                        <span class="control-icon">🔄</span>
-                        <span class="control-label">ROTATE</span>
-                    </button>
-                    <button class="control-btn" id="explodeCube">
-                        <span class="control-icon">💥</span>
-                        <span class="control-label">EXPLODE</span>
-                    </button>
-                </div>
-                
-                <div class="neuro-stats">
-                    <div class="stat-register">
-                        <div class="stat-value" data-target="4">0</div>
-                        <div class="stat-label">PROJECTS</div>
+                <div class="hero-overlay">
+                    <div class="profile-section">
+                        <img src="assets/images/profile.jpg" 
+                             alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
+                             class="profile-image"
+                             width="150" 
+                             height="150">
                     </div>
-                    <div class="stat-register">
-                        <div class="stat-value" data-target="5">0</div>
-                        <div class="stat-label">YEARS</div>
+                    
+                    <div class="architecture-label" role="list" aria-label="Technical specializations">
+                        <span class="layer-chip layer-frontend" role="listitem">FRONTEND</span>
+                        <span class="layer-chip layer-backend" role="listitem">BACKEND</span>
+                        <span class="layer-chip layer-hardware" role="listitem">ECE CORE</span>
                     </div>
-                    <div class="stat-register">
-                        <div class="stat-value" data-target="15">0</div>
-                        <div class="stat-label">MODULES</div>
+                    
+                    <h1 class="hero-title" id="hero-title">
+                        <span class="title-vector">YOHANNES</span>
+                        <span class="title-vector">KIBREKIDUSAN</span>
+                    </h1>
+                    
+                    <div class="hero-subtitle">
+                        <span class="subtitle-component" data-component="hardware">HARDWARE ARCHITECT</span>
+                        <span class="subtitle-divider" aria-hidden="true">|</span>
+                        <span class="subtitle-component" data-component="software">FULL-STACK ENGINEER</span>
+                        <span class="subtitle-divider" aria-hidden="true">|</span>
+                        <span class="subtitle-component" data-component="ai">NEURAL NETWORK DESIGNER</span>
                     </div>
-                    <div class="stat-register">
-                        <div class="stat-value" id="clockSpeed">3.2</div>
-                        <div class="stat-label">GHz CLOCK</div>
+                    
+                    <div class="hero-description">
+                        <p class="description-line">
+                            <span class="description-prefix">> ARCHITECTURE:</span>
+                            <span class="description-text">Ethiopian-born hardware/software hybrid with 5+ years neural training</span>
+                        </p>
+                        <p class="description-line">
+                            <span class="description-prefix">> CORE:</span>
+                            <span class="description-text">Electrical Engineering processor @ Addis Ababa University</span>
+                        </p>
+                        <p class="description-line">
+                            <span class="description-prefix">> SOFTWARE LOADED:</span>
+                            <span class="description-text">MERN stack, Python AI, Unity VR, Video Editing modules</span>
+                        </p>
+                    </div>
+                    
+                    <div class="cube-controls" role="group" aria-label="3D visualization controls">
+                        <button class="control-btn" id="zoomToHardware" aria-label="Zoom to hardware core visualization">
+                            <span class="control-icon" aria-hidden="true">⚡</span>
+                            <span class="control-label">ZOOM TO HARDWARE</span>
+                        </button>
+                        <button class="control-btn" id="rotateCube" aria-label="Rotate 3D architecture cube">
+                            <span class="control-icon" aria-hidden="true">🔄</span>
+                            <span class="control-label">ROTATE</span>
+                        </button>
+                        <button class="control-btn" id="explodeCube" aria-label="Explode view of architecture layers">
+                            <span class="control-icon" aria-hidden="true">💥</span>
+                            <span class="control-label">EXPLODE</span>
+                        </button>
+                    </div>
+                    
+                    <div class="neuro-stats" role="list" aria-label="Professional statistics">
+                        <div class="stat-register" role="listitem">
+                            <div class="stat-value" data-target="4" aria-label="4 projects completed">0</div>
+                            <div class="stat-label">PROJECTS</div>
+                        </div>
+                        <div class="stat-register" role="listitem">
+                            <div class="stat-value" data-target="5" aria-label="5 years experience">0</div>
+                            <div class="stat-label">YEARS</div>
+                        </div>
+                        <div class="stat-register" role="listitem">
+                            <div class="stat-value" data-target="15" aria-label="15 technology modules">0</div>
+                            <div class="stat-label">MODULES</div>
+                        </div>
+                        <div class="stat-register" role="listitem">
+                            <div class="stat-value" id="clockSpeed" aria-label="3.2 GHz processing speed">3.2</div>
+                            <div class="stat-label">GHz CLOCK</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Matrix Section -->
-    <section class="skills-matrix" id="skills">
-        <div class="container">
-            <h2 class="section-title">// SKILL MATRIX</h2>
-            <div class="skills-grid">
-                <div class="skill-gate">
-                    <h3><i class="fas fa-desktop"></i> Frontend</h3>
-                    <ul>
-                        <li>React & Redux</li>
-                        <li>HTML5/CSS3/JS</li>
-                        <li>Three.js</li>
-                        <li>Responsive Design</li>
-                        <li>UI/UX Principles</li>
-                    </ul>
-                </div>
-                <div class="skill-gate">
-                    <h3><i class="fas fa-server"></i> Backend</h3>
-                    <ul>
-                        <li>Node.js & Express</li>
-                        <li>MongoDB & SQL</li>
-                        <li>REST APIs</li>
-                        <li>Authentication</li>
-                        <li>Cloud Deploy</li>
-                    </ul>
-                </div>
-                <div class="skill-gate hardware-gate">
-                    <h3><i class="fas fa-microchip"></i> Hardware/ECE</h3>
-                    <ul>
-                        <li>C/C++ Embedded</li>
-                        <li>Arduino/Raspberry Pi</li>
-                        <li>Circuit Design</li>
-                        <li>Signal Processing</li>
-                        <li>IoT Systems</li>
-                    </ul>
-                </div>
-                <div class="skill-gate">
-                    <h3><i class="fas fa-brain"></i> AI/ML</h3>
-                    <ul>
-                        <li>Python & TensorFlow</li>
-                        <li>OCR Processing</li>
-                        <li>Data Analysis</li>
-                        <li>Neural Networks</li>
-                        <li>Computer Vision</li>
-                    </ul>
-                </div>
-                <div class="skill-gate">
-                    <h3><i class="fas fa-tools"></i> DevOps</h3>
-                    <ul>
-                        <li>Git/GitHub</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Docker Basics</li>
-                        <li>Linux/Bash</li>
-                        <li>Testing & Debug</li>
-                    </ul>
-                </div>
-                <div class="skill-gate">
-                    <h3><i class="fas fa-video"></i> Multimedia</h3>
-                    <ul>
-                        <li>Video Editing</li>
-                        <li>Unity/VR</li>
-                        <li>3D Modeling</li>
-                        <li>Audio Processing</li>
-                        <li>Content Creation</li>
-                    </ul>
+        <!-- Skills Matrix Section -->
+        <section class="skills-matrix reveal-section" id="skills" aria-labelledby="skills-title">
+            <div class="container">
+                <h2 class="section-title" id="skills-title">// SKILL MATRIX</h2>
+                <div class="skills-grid" role="list" aria-label="Technical skills organized by category">
+                    <div class="skill-gate" role="listitem">
+                        <h3><i class="fas fa-desktop" aria-hidden="true"></i> Frontend</h3>
+                        <ul>
+                            <li>React & Redux</li>
+                            <li>HTML5/CSS3/JS</li>
+                            <li>Three.js</li>
+                            <li>Responsive Design</li>
+                            <li>UI/UX Principles</li>
+                        </ul>
+                    </div>
+                    <div class="skill-gate" role="listitem">
+                        <h3><i class="fas fa-server" aria-hidden="true"></i> Backend</h3>
+                        <ul>
+                            <li>Node.js & Express</li>
+                            <li>MongoDB & SQL</li>
+                            <li>REST APIs</li>
+                            <li>Authentication</li>
+                            <li>Cloud Deploy</li>
+                        </ul>
+                    </div>
+                    <div class="skill-gate hardware-gate" role="listitem">
+                        <h3><i class="fas fa-microchip" aria-hidden="true"></i> Hardware/ECE</h3>
+                        <ul>
+                            <li>C/C++ Embedded</li>
+                            <li>Arduino/Raspberry Pi</li>
+                            <li>Circuit Design</li>
+                            <li>Signal Processing</li>
+                            <li>IoT Systems</li>
+                        </ul>
+                    </div>
+                    <div class="skill-gate" role="listitem">
+                        <h3><i class="fas fa-brain" aria-hidden="true"></i> AI/ML</h3>
+                        <ul>
+                            <li>Python & TensorFlow</li>
+                            <li>OCR Processing</li>
+                            <li>Data Analysis</li>
+                            <li>Neural Networks</li>
+                            <li>Computer Vision</li>
+                        </ul>
+                    </div>
+                    <div class="skill-gate" role="listitem">
+                        <h3><i class="fas fa-tools" aria-hidden="true"></i> DevOps</h3>
+                        <ul>
+                            <li>Git/GitHub</li>
+                            <li>CI/CD Pipelines</li>
+                            <li>Docker Basics</li>
+                            <li>Linux/Bash</li>
+                            <li>Testing & Debug</li>
+                        </ul>
+                    </div>
+                    <div class="skill-gate" role="listitem">
+                        <h3><i class="fas fa-video" aria-hidden="true"></i> Multimedia</h3>
+                        <ul>
+                            <li>Video Editing</li>
+                            <li>Unity/VR</li>
+                            <li>3D Modeling</li>
+                            <li>Audio Processing</li>
+                            <li>Content Creation</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Certificates Section -->
-    <section class="certificates-section" id="certificates">
-        <div class="container">
-            <h2 class="section-title">// NEURAL CERTIFICATIONS</h2>
-            <div class="certificates-grid">
-                <div class="certificate-card">
-                    <div class="certificate-image">
-                        <img src="assets/images/CS50AI with python harvard universty.png" alt="Harvard CS50AI Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>CS50's Introduction to AI with Python</h3>
-                        <div class="certificate-issuer">Harvard University</div>
-                        <div class="certificate-tags">
-                            <span class="cert-tag ai">AI/ML</span>
-                            <span class="cert-tag">Python</span>
-                            <span class="cert-tag">Machine Learning</span>
+        <!-- Certificates Section -->
+        <section class="certificates-section reveal-section" id="certificates" aria-labelledby="certificates-title">
+            <div class="container">
+                <h2 class="section-title" id="certificates-title">// NEURAL CERTIFICATIONS</h2>
+                <div class="certificates-grid" role="list" aria-label="Professional certifications and achievements">
+                    <article class="certificate-card" role="listitem">
+                        <div class="certificate-image">
+                            <img src="assets/images/CS50AI with python harvard universty.png" 
+                                 alt="Harvard CS50AI Certificate" 
+                                 loading="lazy"
+                                 width="300" 
+                                 height="200">
                         </div>
-                        <p>Comprehensive course covering search algorithms, knowledge representation, machine learning, and neural networks.</p>
+                        <div class="certificate-info">
+                            <h3>CS50's Introduction to AI with Python</h3>
+                            <div class="certificate-issuer">Harvard University</div>
+                            <div class="certificate-tags">
+                                <span class="cert-tag ai">AI/ML</span>
+                                <span class="cert-tag">Python</span>
+                                <span class="cert-tag">Machine Learning</span>
+                            </div>
+                            <p>Comprehensive course covering search algorithms, knowledge representation, machine learning, and neural networks.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="certificate-card" role="listitem">
+                        <div class="certificate-image">
+                            <img src="assets/images/ai and empoerment universty of marylan.jpg" 
+                                 alt="AI and Empowerment Certificate" 
+                                 loading="lazy"
+                                 width="300" 
+                                 height="200">
+                        </div>
+                        <div class="certificate-info">
+                            <h3>AI and Empowerment</h3>
+                            <div class="certificate-issuer">University of Maryland</div>
+                            <div class="certificate-tags">
+                                <span class="cert-tag ai">AI Ethics</span>
+                                <span class="cert-tag">Social Impact</span>
+                                <span class="cert-tag">Technology</span>
+                            </div>
+                            <p>Exploring the intersection of artificial intelligence and social empowerment, focusing on ethical AI development.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="certificate-card" role="listitem">
+                        <div class="certificate-image">
+                            <img src="assets/images/google ai cloud.jpg" 
+                                 alt="Google AI Cloud Certificate" 
+                                 loading="lazy"
+                                 width="300" 
+                                 height="200">
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Google AI & Cloud Platform</h3>
+                            <div class="certificate-issuer">Google Cloud</div>
+                            <div class="certificate-tags">
+                                <span class="cert-tag hardware">Cloud</span>
+                                <span class="cert-tag ai">AI/ML</span>
+                                <span class="cert-tag">GCP</span>
+                            </div>
+                            <p>Cloud-based AI and machine learning services, deployment, and scalable AI solutions on Google Cloud Platform.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="certificate-card" role="listitem">
+                        <div class="certificate-image pdf-certificate">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                                <span>PDF</span>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Computer Maintenance & Networking</h3>
+                            <div class="certificate-issuer">SATCOM</div>
+                            <div class="certificate-tags">
+                                <span class="cert-tag hardware">Hardware</span>
+                                <span class="cert-tag hardware">Networking</span>
+                                <span class="cert-tag">Maintenance</span>
+                            </div>
+                            <p>Comprehensive training in computer hardware maintenance, network infrastructure, and satellite communication systems.</p>
+                            <a href="assets/images/maintenance and networking satcom.pdf" 
+                               target="_blank" 
+                               class="cert-view-btn"
+                               aria-label="View SATCOM certificate PDF in new window">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Certificate
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section reveal-section" id="projects" aria-labelledby="projects-title">
+            <div class="container">
+                <h2 class="section-title" id="projects-title">// PROJECT REGISTERS</h2>
+                <div class="project-grid" role="list" aria-label="Featured software projects">
+                    <article class="project-card" role="listitem">
+                        <div class="project-preview">
+                            <img src="assets/images/Ethiopia tourism.png" 
+                                 alt="Ethiopia Tourism Platform interface showing cultural heritage sites" 
+                                 loading="lazy"
+                                 width="400" 
+                                 height="300">
+                        </div>
+                        <div class="project-info">
+                            <h3>Ethiopia Tourism Platform</h3>
+                            <div class="project-tags">
+                                <span class="tag">MERN Stack</span>
+                                <span class="tag">REST API</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                            <p>Full-stack web application showcasing Ethiopian cultural heritage with database integration, user authentication, and dynamic content management.</p>
+                            <a href="https://github.com/johnkibre/ethiopia-tourism" 
+                               target="_blank" 
+                               class="btn btn-secondary"
+                               aria-label="View Ethiopia Tourism Platform repository on GitHub in new window">
+                                View Code →
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card" role="listitem">
+                        <div class="project-preview">
+                            <img src="assets/images/ocr1.png" 
+                                 alt="OCR Accessibility App interface for text-to-speech conversion" 
+                                 loading="lazy"
+                                 width="400" 
+                                 height="300">
+                        </div>
+                        <div class="project-info">
+                            <h3>OCR Accessibility App</h3>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Flask</span>
+                                <span class="tag">Tesseract</span>
+                                <span class="tag hardware">AI/ML</span>
+                            </div>
+                            <p>AI-powered solution converting printed text to audio for visually impaired users. 100% voice-controlled with multilingual support.</p>
+                            <a href="https://github.com/johnkibre/OCR" 
+                               target="_blank" 
+                               class="btn btn-secondary"
+                               aria-label="View OCR Accessibility App source code on GitHub in new window">
+                                View Code →
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card" role="listitem">
+                        <div class="project-preview">
+                            <img src="assets/images/HRP 1.png" 
+                                 alt="HR Gap Analysis Tool dashboard showing workforce analytics" 
+                                 loading="lazy"
+                                 width="400" 
+                                 height="300">
+                        </div>
+                        <div class="project-info">
+                            <h3>HR Gap Analysis Tool</h3>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">PWA</span>
+                                <span class="tag">Analytics</span>
+                                <span class="tag hardware">Offline-First</span>
+                            </div>
+                            <p>Enterprise workforce planning tool with AI-powered recommendations, scenario planning, and offline capabilities.</p>
+                            <a href="https://github.com/johnkibre/HR-gap-analysis" 
+                               target="_blank" 
+                               class="btn btn-secondary"
+                               aria-label="View HR Gap Analysis Tool details on GitHub in new window">
+                                View Details →
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Terminal Section -->
+        <section class="contact-terminal reveal-section" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 class="section-title" id="contact-title">// UART COMMS</h2>
+                <div class="terminal">
+                    <div class="terminal-header" aria-hidden="true">
+                        <div class="terminal-button"></div>
+                        <div class="terminal-button"></div>
+                        <div class="terminal-button"></div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line" aria-hidden="true">$ uart_handshake --protocol=contact</div>
+                        <div class="terminal-line" aria-hidden="true">> Establishing connection...</div>
+                        <div class="terminal-line" aria-hidden="true">> Status: READY</div>
+                        
+                        <form class="contact-form" aria-label="Contact form">
+                            <div class="terminal-line">
+                                <label for="senderName">> Enter Sender Name:</label>
+                                <input type="text" 
+                                       class="terminal-input" 
+                                       placeholder="John Doe" 
+                                       id="senderName"
+                                       name="name"
+                                       required
+                                       aria-describedby="name-help">
+                                <div id="name-help" class="sr-only">Enter your full name</div>
+                            </div>
+                            <div class="terminal-line">
+                                <label for="senderEmail">> Enter Email Address:</label>
+                                <input type="email" 
+                                       class="terminal-input" 
+                                       placeholder="john@example.com" 
+                                       id="senderEmail"
+                                       name="email"
+                                       required
+                                       aria-describedby="email-help">
+                                <div id="email-help" class="sr-only">Enter a valid email address</div>
+                            </div>
+                            <div class="terminal-line">
+                                <label for="senderMessage">> Enter Payload (Message):</label>
+                                <textarea class="terminal-input" 
+                                          placeholder="Let's build something amazing..." 
+                                          id="senderMessage"
+                                          name="message"
+                                          rows="3"
+                                          required
+                                          aria-describedby="message-help"></textarea>
+                                <div id="message-help" class="sr-only">Enter your message or project inquiry</div>
+                            </div>
+                            <div class="terminal-line">
+                                <button type="submit" 
+                                        class="terminal-submit" 
+                                        aria-describedby="submit-help">
+                                    TRANSMIT
+                                </button>
+                                <div id="submit-help" class="sr-only">Send your message</div>
+                            </div>
+                        </form>
+                        
+                        <div id="terminalResponse" 
+                             class="terminal-line" 
+                             role="status" 
+                             aria-live="polite"
+                             aria-label="Form submission status"></div>
                     </div>
                 </div>
                 
-                <div class="certificate-card">
-                    <div class="certificate-image">
-                        <img src="assets/images/ai and empoerment universty of marylan.jpg" alt="AI and Empowerment Certificate">
+                <div class="contact-info" role="list" aria-label="Contact information">
+                    <div class="info-item" role="listitem">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:jhonkibre0912@gmail.com" aria-label="Send email to jhonkibre0912@gmail.com">
+                            jhonkibre0912@gmail.com
+                        </a>
                     </div>
-                    <div class="certificate-info">
-                        <h3>AI and Empowerment</h3>
-                        <div class="certificate-issuer">University of Maryland</div>
-                        <div class="certificate-tags">
-                            <span class="cert-tag ai">AI Ethics</span>
-                            <span class="cert-tag">Social Impact</span>
-                            <span class="cert-tag">Technology</span>
-                        </div>
-                        <p>Exploring the intersection of artificial intelligence and social empowerment, focusing on ethical AI development.</p>
+                    <div class="info-item" role="listitem">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <a href="https://github.com/johnkibre" 
+                           target="_blank" 
+                           aria-label="Visit GitHub profile in new window">
+                            github.com/johnkibre
+                        </a>
                     </div>
-                </div>
-                
-                <div class="certificate-card">
-                    <div class="certificate-image">
-                        <img src="assets/images/google ai cloud.jpg" alt="Google AI Cloud Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Google AI & Cloud Platform</h3>
-                        <div class="certificate-issuer">Google Cloud</div>
-                        <div class="certificate-tags">
-                            <span class="cert-tag hardware">Cloud</span>
-                            <span class="cert-tag ai">AI/ML</span>
-                            <span class="cert-tag">GCP</span>
-                        </div>
-                        <p>Cloud-based AI and machine learning services, deployment, and scalable AI solutions on Google Cloud Platform.</p>
-                    </div>
-                </div>
-                
-                <div class="certificate-card">
-                    <div class="certificate-image pdf-certificate">
-                        <div class="pdf-icon">
-                            <i class="fas fa-file-pdf"></i>
-                            <span>PDF</span>
-                        </div>
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Computer Maintenance & Networking</h3>
-                        <div class="certificate-issuer">SATCOM</div>
-                        <div class="certificate-tags">
-                            <span class="cert-tag hardware">Hardware</span>
-                            <span class="cert-tag hardware">Networking</span>
-                            <span class="cert-tag">Maintenance</span>
-                        </div>
-                        <p>Comprehensive training in computer hardware maintenance, network infrastructure, and satellite communication systems.</p>
-                        <a href="assets/images/maintenance and networking satcom.pdf" target="_blank" class="cert-view-btn">
-                            <i class="fas fa-external-link-alt"></i> View Certificate
+                    <div class="info-item" role="listitem">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <a href="https://linkedin.com/in/yohannes-kibrekidusan" 
+                           target="_blank" 
+                           aria-label="Visit LinkedIn profile in new window">
+                            linkedin.com/in/yohannes-kibrekidusan
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section" id="projects">
-        <div class="container">
-            <h2 class="section-title">// PROJECT REGISTERS</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-preview">
-                        <img src="assets/images/Ethiopia tourism.png" alt="Ethiopia Tourism Platform">
-                    </div>
-                    <div class="project-info">
-                        <h3>Ethiopia Tourism Platform</h3>
-                        <div class="project-tags">
-                            <span class="tag">MERN Stack</span>
-                            <span class="tag">REST API</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">Responsive</span>
-                        </div>
-                        <p>Full-stack web application showcasing Ethiopian cultural heritage with database integration, user authentication, and dynamic content management.</p>
-                        <a href="https://johnkibre.github.io/ethiopia-tourism" target="_blank" class="btn btn-secondary">View Live →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-preview">
-                        <img src="assets/images/ocr1.png" alt="OCR Accessibility App">
-                    </div>
-                    <div class="project-info">
-                        <h3>OCR Accessibility App</h3>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">Tesseract</span>
-                            <span class="tag hardware">AI/ML</span>
-                        </div>
-                        <p>AI-powered solution converting printed text to audio for visually impaired users. 100% voice-controlled with multilingual support.</p>
-                        <a href="https://github.com/johnkibre/ocr" target="_blank" class="btn btn-secondary">View Code →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-preview">
-                        <img src="assets/images/HRP 1.png" alt="HR Planning System">
-                    </div>
-                    <div class="project-info">
-                        <h3>HR Gap Analysis Tool</h3>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">PWA</span>
-                            <span class="tag">Analytics</span>
-                            <span class="tag hardware">Offline-First</span>
-                        </div>
-                        <p>Enterprise workforce planning tool with AI-powered recommendations, scenario planning, and offline capabilities.</p>
-                        <a href="https://github.com/johnkibre/HR-gap-analysis" target="_blank" class="btn btn-secondary">View Details →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Terminal Section -->
-    <section class="contact-terminal" id="contact">
-        <div class="container">
-            <h2 class="section-title">// UART COMMS</h2>
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="terminal-button"></div>
-                    <div class="terminal-button"></div>
-                    <div class="terminal-button"></div>
-                </div>
-                <div class="terminal-content">
-                    <div class="terminal-line">$ uart_handshake --protocol=contact</div>
-                    <div class="terminal-line">> Establishing connection...</div>
-                    <div class="terminal-line">> Status: READY</div>
-                    <div class="terminal-line" style="margin-top: 1rem;">> Enter Sender Name:
-                        <input type="text" class="terminal-input" placeholder="John Doe" id="senderName">
-                    </div>
-                    <div class="terminal-line">> Enter Email Address:
-                        <input type="email" class="terminal-input" placeholder="john@example.com" id="senderEmail">
-                    </div>
-                    <div class="terminal-line">> Enter Payload (Message):
-                        <textarea class="terminal-input" placeholder="Let's build something amazing..." id="senderMessage" rows="3"></textarea>
-                    </div>
-                    <div class="terminal-line" style="margin-top: 1rem;">
-                        <button class="terminal-submit" onclick="sendTerminalMessage()">TRANSMIT</button>
-                    </div>
-                    <div id="terminalResponse" class="terminal-line" style="margin-top: 1rem; color: var(--hardware-amber);"></div>
-                </div>
-            </div>
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>jhonkibre0912@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/johnkibre" target="_blank">github.com/johnkibre</a>
-                </div>
-                <div class="info-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="https://linkedin.com/in/yohannes-kibrekidusan" target="_blank">linkedin.com/in/yohannes-kibrekidusan</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- CRT Overlay (Hidden by default) -->
-    <div class="crt-overlay" id="crtOverlay">
+    <div class="crt-overlay" id="crtOverlay" aria-hidden="true">
         <div class="crt-scanlines"></div>
         <div class="crt-flicker"></div>
         <div class="crt-curvature"></div>
     </div>
 
-    <!-- JavaScript Modules -->
-    <script src="three-core.js"></script>
-    <script src="neuro-script.js"></script>
+    <!-- Screen reader only content -->
+    <div class="sr-only">
+        <p>This portfolio showcases the work of Yohannes Kibrekidusan, a full-stack developer and electrical engineer specializing in AI/ML, hardware design, and web development.</p>
+    </div>
+
+    <!-- Deferred JavaScript for optimal performance -->
+    <script src="three-core.js" defer></script>
+    <script src="neuro-script.js" defer></script>
     
-    <!-- Inline Boot Sequence -->
+    <!-- Inline critical JavaScript -->
     <script>
+        // Boot sequence with performance optimization
         document.addEventListener('DOMContentLoaded', () => {
             const bootLines = document.querySelectorAll('.boot-line');
             let delay = 0;
+            
+            // Respect reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const animationDuration = prefersReducedMotion ? 50 : 500;
             
             bootLines.forEach((line, index) => {
                 setTimeout(() => {
                     line.style.animationDelay = `${delay}s`;
                     line.style.opacity = '1';
-                    delay += 0.5;
+                    delay += prefersReducedMotion ? 0.1 : 0.5;
                     
                     if (index === bootLines.length - 1) {
                         setTimeout(() => {
-                            document.getElementById('neuroBoot').style.opacity = '0';
+                            const bootElement = document.getElementById('neuroBoot');
+                            bootElement.style.opacity = '0';
                             setTimeout(() => {
-                                document.getElementById('neuroBoot').style.display = 'none';
-                            }, 500);
-                        }, 1000);
+                                bootElement.style.display = 'none';
+                                bootElement.setAttribute('aria-hidden', 'true');
+                            }, prefersReducedMotion ? 50 : 500);
+                        }, prefersReducedMotion ? 100 : 1000);
                     }
-                }, index * 500);
+                }, index * animationDuration);
             });
+            
+            // Intersection Observer for scroll animations
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, observerOptions);
+                
+                // Observe reveal sections
+                document.querySelectorAll('.reveal-section').forEach(section => {
+                    observer.observe(section);
+                });
+            }
+        });
+        
+        // Contact form handling with accessibility
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.contact-form');
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const responseDiv = document.getElementById('terminalResponse');
+                    const submitBtn = document.querySelector('.terminal-submit');
+                    
+                    // Provide immediate feedback
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'TRANSMITTING...';
+                    responseDiv.textContent = '> Processing transmission...';
+                    
+                    // Simulate form submission (replace with actual endpoint)
+                    setTimeout(() => {
+                        responseDiv.innerHTML = '> <span style="color: var(--electric-cyan);">200 OK</span> - Message transmitted successfully!';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'TRANSMIT';
+                        
+                        // Reset form
+                        form.reset();
+                        
+                        // Announce success to screen readers
+                        const announcement = document.createElement('div');
+                        announcement.setAttribute('aria-live', 'assertive');
+                        announcement.setAttribute('aria-atomic', 'true');
+                        announcement.className = 'sr-only';
+                        announcement.textContent = 'Message sent successfully';
+                        document.body.appendChild(announcement);
+                        
+                        setTimeout(() => {
+                            document.body.removeChild(announcement);
+                        }, 1000);
+                    }, 2000);
+                });
+            }
         });
     </script>
 </body>
