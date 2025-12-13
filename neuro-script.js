@@ -16,6 +16,23 @@ class NeuralInterface {
         this.initKeyboardNavigation();
         this.initPerformanceOptimizations();
         this.initAccessibilityFeatures();
+        this.initButtonFixes();
+    }
+    
+    // Fix button click issues
+    initButtonFixes() {
+        // Ensure all project buttons work
+        document.querySelectorAll('.btn-secondary').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const href = button.getAttribute('href');
+                if (href && href.startsWith('http')) {
+                    console.log('🔗 Opening link:', href);
+                    // Force open in new tab
+                    window.open(href, '_blank', 'noopener,noreferrer');
+                    e.preventDefault();
+                }
+            });
+        });
     }
     
     // Performance: Intersection Observer for scroll animations
@@ -48,7 +65,25 @@ class NeuralInterface {
             heroSection.classList.add('revealed');
             heroSection.style.opacity = '1';
             heroSection.style.transform = 'none';
+            heroSection.style.display = 'flex';
+            heroSection.style.visibility = 'visible';
         }
+        
+        // Force profile image and title visibility
+        const profileImg = document.querySelector('.profile-image');
+        const heroTitle = document.querySelector('.hero-title');
+        const profileSection = document.querySelector('.profile-section');
+        const heroOverlay = document.querySelector('.hero-overlay');
+        
+        [profileImg, heroTitle, profileSection, heroOverlay].forEach(element => {
+            if (element) {
+                element.style.opacity = '1';
+                element.style.visibility = 'visible';
+                element.style.display = element === heroTitle ? 'block' : (element === profileSection || element === heroOverlay ? 'flex' : 'block');
+                element.style.position = 'relative';
+                element.style.zIndex = '100';
+            }
+        });
         
         this.observers.set('reveal', revealObserver);
         
