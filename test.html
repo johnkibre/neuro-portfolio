@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a192f;
+            color: white;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #64ffda;
+            border-radius: 8px;
+        }
+        .profile-test {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #64ffda;
+            border-radius: 50%;
+        }
+        .title-test {
+            font-size: 2rem;
+            color: #64ffda;
+            margin: 20px 0;
+        }
+        #three-test {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ffb700;
+            background: rgba(255, 183, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Portfolio Debug Test Page</h1>
+    
+    <div class="test-section">
+        <h2>1. Profile Image Test</h2>
+        <img src="assets/images/profile.jpg?v=4" 
+             alt="Profile Test" 
+             class="profile-test"
+             onload="console.log('✅ Profile image loaded in test page')"
+             onerror="console.error('❌ Profile image failed in test page')">
+        <p>Status: <span id="img-status">Loading...</span></p>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Name Display Test</h2>
+        <div class="title-test">YOHANNES KIBREKIDUSAN</div>
+        <p>✅ Name should be visible above</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Three.js Container Test</h2>
+        <div id="three-test">Three.js container placeholder</div>
+        <p>Status: <span id="three-status">Checking...</span></p>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. OCR Link Test</h2>
+        <a href="https://github.com/johnkibre/ocr" target="_blank" style="color: #64ffda;">
+            🔗 Test OCR Repository Link
+        </a>
+        <p>Click the link above to test if it works</p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script>
+        // Test profile image
+        const img = document.querySelector('.profile-test');
+        const imgStatus = document.getElementById('img-status');
+        
+        img.onload = () => {
+            imgStatus.textContent = '✅ Loaded successfully';
+            imgStatus.style.color = '#64ffda';
+        };
+        
+        img.onerror = () => {
+            imgStatus.textContent = '❌ Failed to load';
+            imgStatus.style.color = '#ff6b6b';
+        };
+        
+        // Test Three.js
+        const threeStatus = document.getElementById('three-status');
+        if (typeof THREE !== 'undefined') {
+            threeStatus.textContent = '✅ Three.js loaded';
+            threeStatus.style.color = '#64ffda';
+            
+            // Create a simple test scene
+            const container = document.getElementById('three-test');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 300/200, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(300, 200);
+            container.appendChild(renderer.domElement);
+            
+            // Create a simple cube
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 0x64ffda, wireframe: true });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+            camera.position.z = 5;
+            
+            // Animate
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+        } else {
+            threeStatus.textContent = '❌ Three.js not loaded';
+            threeStatus.style.color = '#ff6b6b';
+        }
+        
+        console.log('🧪 Test page loaded');
+        console.log('Profile image src:', img.src);
+        console.log('Three.js available:', typeof THREE !== 'undefined');
+    </script>
+</body>
+</html>
