@@ -15,6 +15,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
+    <!-- Force reload timestamp -->
+    <meta name="timestamp" content="2024-12-13-URGENT-FIX">
+    
     <!-- Critical CSS Inlined for Above-the-Fold -->
     <style>
         /* Critical CSS for instant rendering */
@@ -110,9 +113,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="assets/images/profile.jpg?v=4" as="image" type="image/jpeg">
-    <link rel="preload" href="neuro-style.css?v=4" as="style">
+    <!-- Preload critical resources with timestamp -->
+    <link rel="preload" href="assets/images/profile.jpg?t=20241213" as="image" type="image/jpeg">
+    <link rel="preload" href="neuro-style.css?t=20241213" as="style">
     
     <!-- Typography with display=swap for performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -121,7 +124,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="neuro-style.css?v=4">
+    <link rel="stylesheet" href="neuro-style.css?t=20241213">
     
     <!-- Deferred JavaScript for performance -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
@@ -201,12 +204,14 @@
                 
                 <div class="hero-overlay">
                     <div class="profile-section">
-                        <img src="assets/images/profile.jpg?v=4" 
+                        <img src="assets/images/profile.jpg?t=20241213" 
                              alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
                              class="profile-image"
                              width="150" 
                              height="150"
-                             onerror="console.error('Profile image failed to load:', this.src)">
+                             style="display: block !important; visibility: visible !important;"
+                             onload="console.log('✅ Profile loaded:', this.src)"
+                             onerror="console.error('❌ Profile failed:', this.src)">
                     </div>
                     
                     <div class="architecture-label" role="list" aria-label="Technical specializations">
@@ -215,9 +220,9 @@
                         <span class="layer-chip layer-hardware" role="listitem">ECE CORE</span>
                     </div>
                     
-                    <h1 class="hero-title" id="hero-title">
-                        <span class="title-vector">YOHANNES</span>
-                        <span class="title-vector">KIBREKIDUSAN</span>
+                    <h1 class="hero-title" id="hero-title" style="display: block !important; visibility: visible !important;">
+                        <span class="title-vector" style="display: block !important; visibility: visible !important;">YOHANNES</span>
+                        <span class="title-vector" style="display: block !important; visibility: visible !important;">KIBREKIDUSAN</span>
                     </h1>
                     
                     <div class="hero-subtitle">
@@ -636,8 +641,8 @@
     </div>
 
     <!-- Deferred JavaScript for optimal performance -->
-    <script src="three-core.js?v=4" defer></script>
-    <script src="neuro-script.js?v=4" defer></script>
+    <script src="three-core.js?t=20241213" defer></script>
+    <script src="neuro-script.js?t=20241213" defer></script>
     
     <!-- Inline critical JavaScript -->
     <script>
@@ -706,6 +711,38 @@
             if (profileImg) {
                 profileImg.onload = () => console.log('✅ Profile image loaded successfully');
                 profileImg.onerror = () => console.error('❌ Profile image failed to load');
+                
+                // Force visibility
+                setTimeout(() => {
+                    profileImg.style.display = 'block';
+                    profileImg.style.visibility = 'visible';
+                    profileImg.style.opacity = '1';
+                }, 100);
+            }
+            
+            // Force name visibility
+            if (heroTitle) {
+                setTimeout(() => {
+                    heroTitle.style.display = 'block';
+                    heroTitle.style.visibility = 'visible';
+                    heroTitle.style.opacity = '1';
+                    const titleVectors = heroTitle.querySelectorAll('.title-vector');
+                    titleVectors.forEach(vector => {
+                        vector.style.display = 'block';
+                        vector.style.visibility = 'visible';
+                        vector.style.opacity = '1';
+                    });
+                }, 100);
+            }
+            
+            // Force Three.js initialization
+            if (threeContainer) {
+                setTimeout(() => {
+                    console.log('🎯 Forcing Three.js initialization...');
+                    if (typeof initThreeJS === 'function') {
+                        initThreeJS();
+                    }
+                }, 500);
             }
         });
         
