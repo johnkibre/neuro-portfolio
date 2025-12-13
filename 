@@ -1,0 +1,5 @@
+[33mf1a86b2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m  Add .gitignore to exclude .md files from repository
+[33m163ef6d[m  Add stunning 3D effects: floating animations, depth, perspective transforms
+[33m765c1a1[m  Add contact form backend setup guide and Formspree integration code
+[33m32f4177[m  Fix and enhance contact form with binary transmission animation and better UX
+[33maceb94f[m  Add SATCOM Computer Maintenance & Networking certificate with PDF viewer
