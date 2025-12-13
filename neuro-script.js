@@ -1063,3 +1063,312 @@ window.addEventListener('beforeunload', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { NeuralInterface, ContactForm };
 }
+
+// MOBILE-SPECIFIC FIXES
+class MobileFixer {
+    constructor() {
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        this.isSmallScreen = window.innerWidth < 768;
+        this.init();
+    }
+    
+    init() {
+        if (this.isMobile || this.isSmallScreen) {
+            console.log('📱 Mobile device detected, applying mobile fixes...');
+            this.fixMobileLayout();
+            this.fixMobileButtons();
+            this.addMobileEventListeners();
+        }
+    }
+    
+    fixMobileLayout() {
+        console.log('📱 Fixing mobile layout...');
+        
+        // Force mobile styles with JavaScript
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @media (max-width: 768px) {
+                .profile-header {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    text-align: center !important;
+                    gap: 1.5rem !important;
+                    width: 100% !important;
+                    padding: 1rem !important;
+                }
+                
+                .profile-section {
+                    order: 1 !important;
+                    width: 100% !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin: 0 !important;
+                }
+                
+                .profile-image {
+                    width: 120px !important;
+                    height: 120px !important;
+                    display: block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                    margin: 0 auto !important;
+                    border: 3px solid #64ffda !important;
+                    border-radius: 50% !important;
+                    object-fit: cover !important;
+                }
+                
+                .profile-text {
+                    order: 2 !important;
+                    width: 100% !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    text-align: center !important;
+                    margin: 0 !important;
+                }
+                
+                .hero-title {
+                    font-size: 1.8rem !important;
+                    text-align: center !important;
+                    margin: 1rem 0 !important;
+                }
+                
+                .btn-secondary {
+                    min-height: 48px !important;
+                    padding: 12px 24px !important;
+                    font-size: 16px !important;
+                    touch-action: manipulation !important;
+                    -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+                    background: rgba(100, 255, 218, 0.1) !important;
+                    border: 2px solid #64ffda !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Force layout with JavaScript
+        setTimeout(() => {
+            this.applyMobileStyles();
+        }, 100);
+    }
+    
+    applyMobileStyles() {
+        const elements = {
+            profileHeader: document.querySelector('.profile-header'),
+            profileSection: document.querySelector('.profile-section'),
+            profileImage: document.querySelector('.profile-image'),
+            profileText: document.querySelector('.profile-text'),
+            heroTitle: document.querySelector('.hero-title')
+        };
+        
+        if (elements.profileHeader) {
+            elements.profileHeader.style.cssText = `
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 1.5rem !important;
+                width: 100% !important;
+                padding: 1rem !important;
+            `;
+        }
+        
+        if (elements.profileSection) {
+            elements.profileSection.style.cssText = `
+                order: 1 !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                margin: 0 !important;
+            `;
+        }
+        
+        if (elements.profileImage) {
+            elements.profileImage.style.cssText = `
+                width: 120px !important;
+                height: 120px !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                margin: 0 auto !important;
+                border: 3px solid #64ffda !important;
+                border-radius: 50% !important;
+                object-fit: cover !important;
+                position: relative !important;
+                z-index: 1000 !important;
+            `;
+            
+            // Force image reload
+            const src = elements.profileImage.src;
+            elements.profileImage.src = src + '?mobile=' + Date.now();
+        }
+        
+        if (elements.profileText) {
+            elements.profileText.style.cssText = `
+                order: 2 !important;
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                margin: 0 !important;
+            `;
+        }
+        
+        if (elements.heroTitle) {
+            elements.heroTitle.style.cssText = `
+                font-size: 1.8rem !important;
+                text-align: center !important;
+                margin: 1rem 0 !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            `;
+        }
+    }
+    
+    fixMobileButtons() {
+        console.log('📱 Fixing mobile buttons...');
+        
+        // Find and fix all buttons, especially OCR
+        const buttons = document.querySelectorAll('.btn-secondary');
+        buttons.forEach((button, index) => {
+            console.log(`📱 Mobile button ${index + 1}:`, button.href);
+            
+            // Make buttons mobile-friendly
+            button.style.cssText += `
+                min-height: 48px !important;
+                padding: 12px 24px !important;
+                font-size: 16px !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+                background: rgba(100, 255, 218, 0.1) !important;
+                border: 2px solid #64ffda !important;
+                pointer-events: auto !important;
+                cursor: pointer !important;
+                z-index: 3000 !important;
+                position: relative !important;
+            `;
+            
+            // Add mobile-specific event listeners
+            this.addMobileButtonEvents(button);
+        });
+        
+        // Special handling for OCR button
+        this.fixOcrButtonMobile();
+    }
+    
+    fixOcrButtonMobile() {
+        const ocrButton = document.querySelector('a[href*="johnkibre/ocr"]');
+        if (ocrButton) {
+            console.log('📱 Fixing OCR button for mobile...');
+            
+            // Make OCR button super visible and clickable on mobile
+            ocrButton.style.cssText += `
+                background: rgba(255, 183, 0, 0.2) !important;
+                border: 3px solid #ffb700 !important;
+                color: #ffb700 !important;
+                font-weight: bold !important;
+                min-height: 50px !important;
+                font-size: 18px !important;
+                z-index: 5000 !important;
+            `;
+            
+            // Remove all existing listeners and add mobile-optimized ones
+            const newOcrButton = ocrButton.cloneNode(true);
+            ocrButton.parentNode.replaceChild(newOcrButton, ocrButton);
+            
+            // Add multiple mobile event types
+            ['touchstart', 'touchend', 'click', 'tap'].forEach(eventType => {
+                newOcrButton.addEventListener(eventType, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('📱 OCR button touched/clicked via:', eventType);
+                    
+                    // Visual feedback
+                    newOcrButton.style.background = 'rgba(255, 183, 0, 0.5)';
+                    newOcrButton.textContent = 'Opening OCR...';
+                    
+                    // Open URL with multiple fallback methods
+                    setTimeout(() => {
+                        const ocrUrl = 'https://github.com/johnkibre/ocr';
+                        
+                        try {
+                            // Method 1: window.open
+                            const newWindow = window.open(ocrUrl, '_blank', 'noopener,noreferrer');
+                            if (!newWindow) {
+                                throw new Error('Popup blocked');
+                            }
+                        } catch (error) {
+                            console.log('📱 Fallback: Using location.href');
+                            // Method 2: Direct navigation
+                            window.location.href = ocrUrl;
+                        }
+                        
+                        // Reset button
+                        setTimeout(() => {
+                            newOcrButton.textContent = 'View Code →';
+                            newOcrButton.style.background = 'rgba(255, 183, 0, 0.2)';
+                        }, 2000);
+                    }, 100);
+                }, { passive: false });
+            });
+            
+            console.log('✅ OCR button mobile fix applied');
+        } else {
+            console.error('❌ OCR button not found for mobile fix');
+        }
+    }
+    
+    addMobileButtonEvents(button) {
+        // Add touch events for better mobile responsiveness
+        button.addEventListener('touchstart', (e) => {
+            button.style.transform = 'scale(0.95)';
+            button.style.background = 'rgba(100, 255, 218, 0.3)';
+        }, { passive: true });
+        
+        button.addEventListener('touchend', (e) => {
+            button.style.transform = 'scale(1)';
+            button.style.background = 'rgba(100, 255, 218, 0.1)';
+        }, { passive: true });
+    }
+    
+    addMobileEventListeners() {
+        // Handle orientation changes
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.applyMobileStyles();
+                this.fixMobileButtons();
+            }, 500);
+        });
+        
+        // Handle resize events
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                setTimeout(() => {
+                    this.applyMobileStyles();
+                }, 300);
+            }
+        });
+    }
+}
+
+// Initialize mobile fixer
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        window.mobileFixer = new MobileFixer();
+    }, 1000);
+});
+
+// Also initialize on window load as backup
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        if (!window.mobileFixer) {
+            window.mobileFixer = new MobileFixer();
+        }
+    }, 1500);
+});

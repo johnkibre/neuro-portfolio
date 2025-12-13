@@ -1945,3 +1945,217 @@ html {
         max-width: calc(100% - 1rem) !important;
     }
 }
+/* AGGRESSIVE MOBILE FIXES - HIGHEST PRIORITY */
+@media screen and (max-width: 768px) {
+    /* Force mobile layout */
+    .hero-circuit {
+        padding: 1rem !important;
+        min-height: auto !important;
+    }
+    
+    .hero-overlay {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 1rem !important;
+    }
+    
+    .profile-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        padding: 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .profile-section {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 0 0 1rem 0 !important;
+    }
+    
+    .profile-image {
+        width: 120px !important;
+        height: 120px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 auto !important;
+        border: 3px solid #64ffda !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        position: relative !important;
+        z-index: 1000 !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .profile-text {
+        order: 2 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        margin: 0 !important;
+        flex: none !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+        text-align: center !important;
+        margin: 1rem 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        line-height: 1.2 !important;
+    }
+    
+    .title-vector {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-size: 1.8rem !important;
+    }
+    
+    .architecture-label {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .layer-chip {
+        font-size: 0.7rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    /* Mobile button fixes */
+    .btn-secondary {
+        min-height: 48px !important;
+        padding: 12px 24px !important;
+        font-size: 16px !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+        background: rgba(100, 255, 218, 0.1) !important;
+        border: 2px solid #64ffda !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        z-index: 3000 !important;
+        position: relative !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: auto !important;
+        margin: 0.5rem 0 !important;
+    }
+    
+    /* Special OCR button styling for mobile */
+    .btn-secondary[href*="ocr"] {
+        background: rgba(255, 183, 0, 0.2) !important;
+        border: 3px solid #ffb700 !important;
+        color: #ffb700 !important;
+        font-weight: bold !important;
+        min-height: 50px !important;
+        font-size: 18px !important;
+        z-index: 5000 !important;
+        box-shadow: 0 4px 12px rgba(255, 183, 0, 0.3) !important;
+    }
+    
+    .btn-secondary[href*="ocr"]:active,
+    .btn-secondary[href*="ocr"]:focus {
+        background: rgba(255, 183, 0, 0.4) !important;
+        transform: scale(0.95) !important;
+    }
+    
+    /* Project cards mobile layout */
+    .project-card {
+        grid-template-columns: 1fr !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .project-info {
+        padding: 1rem !important;
+        text-align: center !important;
+    }
+    
+    .project-preview {
+        order: -1 !important;
+        padding: 1rem !important;
+    }
+}
+
+/* Extra small mobile devices */
+@media screen and (max-width: 480px) {
+    .profile-image {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .title-vector {
+        font-size: 1.5rem !important;
+    }
+    
+    .btn-secondary {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+        min-height: 44px !important;
+    }
+    
+    .btn-secondary[href*="ocr"] {
+        font-size: 16px !important;
+        min-height: 48px !important;
+    }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .btn-secondary {
+        -webkit-appearance: none !important;
+        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+        -webkit-user-select: none !important;
+    }
+    
+    .profile-image {
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 1) {
+    .btn-secondary {
+        touch-action: manipulation !important;
+    }
+}
+
+/* Force visibility on all mobile devices */
+@media (max-width: 768px) {
+    .profile-header,
+    .profile-section,
+    .profile-image,
+    .profile-text,
+    .hero-title,
+    .title-vector {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+    }
+    
+    .profile-header {
+        display: flex !important;
+    }
+    
+    .profile-text {
+        display: flex !important;
+    }
+}

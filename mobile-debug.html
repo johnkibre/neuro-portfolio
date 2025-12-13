@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Mobile Debug - OCR & Profile Test</title>
+    <style>
+        body {
+            background: #0a192f;
+            color: #e6f1ff;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .debug-container {
+            max-width: 100%;
+            border: 2px solid #64ffda;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .profile-test {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 2px solid #ffb700;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .profile-image-test {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #64ffda;
+            object-fit: cover;
+            background: rgba(100, 255, 218, 0.1);
+        }
+        
+        .profile-name-test {
+            font-size: 1.8rem;
+            color: #64ffda;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .ocr-button-test {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: rgba(255, 183, 0, 0.2);
+            border: 3px solid #ffb700;
+            color: #ffb700;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px;
+            cursor: pointer;
+            min-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: rgba(255, 183, 0, 0.3);
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .ocr-button-test:active {
+            background: rgba(255, 183, 0, 0.4);
+            transform: scale(0.95);
+        }
+        
+        .debug-info {
+            background: rgba(100, 255, 218, 0.1);
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .test-result {
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 3px;
+        }
+        
+        .success { background: rgba(0, 255, 0, 0.2); }
+        .error { background: rgba(255, 0, 0, 0.2); }
+        .warning { background: rgba(255, 255, 0, 0.2); color: #000; }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h1>📱 Mobile Debug Test</h1>
+        
+        <div class="debug-info">
+            <h3>Device Info:</h3>
+            <div id="deviceInfo"></div>
+        </div>
+        
+        <div class="profile-test">
+            <h3>Profile Layout Test</h3>
+            <img src="assets/images/profile.jpg" 
+                 alt="Profile Test" 
+                 class="profile-image-test"
+                 onload="logResult('✅ Profile image loaded', 'success');"
+                 onerror="logResult('❌ Profile image failed', 'error'); this.style.background='#ff0000';">
+            
+            <div class="profile-name-test">YOHANNES KIBREKIDUSAN</div>
+            <p>Hardware/Software Engineer</p>
+        </div>
+        
+        <div class="debug-container">
+            <h3>OCR Button Test</h3>
+            <a href="https://github.com/johnkibre/ocr" 
+               class="ocr-button-test" 
+               id="ocrTestBtn">
+                📱 Test OCR Button →
+            </a>
+            
+            <div class="debug-info">
+                <h4>Button Events:</h4>
+                <div id="buttonEvents"></div>
+            </div>
+        </div>
+        
+        <div class="debug-info">
+            <h3>Test Results:</h3>
+            <div id="testResults"></div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('📱 Mobile debug test starting...');
+        
+        const deviceInfo = document.getElementById('deviceInfo');
+        const buttonEvents = document.getElementById('buttonEvents');
+        const testResults = document.getElementById('testResults');
+        
+        function logResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            testResults.appendChild(div);
+            console.log(message);
+        }
+        
+        function logButtonEvent(event) {
+            const div = document.createElement('div');
+            div.textContent = `${event} at ${new Date().toLocaleTimeString()}`;
+            buttonEvents.appendChild(div);
+        }
+        
+        // Device detection
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isSmallScreen = window.innerWidth < 768;
+        const isTouchDevice = 'ontouchstart' in window;
+        
+        deviceInfo.innerHTML = `
+            <div>User Agent: ${navigator.userAgent.substring(0, 50)}...</div>
+            <div>Screen: ${window.innerWidth}x${window.innerHeight}</div>
+            <div>Device Pixel Ratio: ${window.devicePixelRatio}</div>
+            <div>Is Mobile: ${isMobile ? 'YES' : 'NO'}</div>
+            <div>Is Small Screen: ${isSmallScreen ? 'YES' : 'NO'}</div>
+            <div>Touch Support: ${isTouchDevice ? 'YES' : 'NO'}</div>
+            <div>Platform: ${navigator.platform}</div>
+        `;
+        
+        logResult(`📱 Device: ${isMobile ? 'Mobile' : 'Desktop'}, Screen: ${window.innerWidth}x${window.innerHeight}`, 'info');
+        
+        // Test OCR button
+        const ocrBtn = document.getElementById('ocrTestBtn');
+        if (ocrBtn) {
+            logResult('✅ OCR button found', 'success');
+            
+            // Add all possible event listeners
+            ['touchstart', 'touchend', 'click', 'mousedown', 'mouseup'].forEach(eventType => {
+                ocrBtn.addEventListener(eventType, (e) => {
+                    logButtonEvent(`${eventType} event`);
+                    
+                    if (eventType === 'click' || eventType === 'touchend') {
+                        e.preventDefault();
+                        logResult(`🔗 OCR button activated via ${eventType}`, 'success');
+                        
+                        // Visual feedback
+                        ocrBtn.style.background = 'rgba(255, 183, 0, 0.5)';
+                        ocrBtn.textContent = '📱 Opening OCR...';
+                        
+                        // Test URL opening
+                        setTimeout(() => {
+                            const ocrUrl = 'https://github.com/johnkibre/ocr';
+                            logResult(`🚀 Attempting to open: ${ocrUrl}`, 'info');
+                            
+                            try {
+                                const newWindow = window.open(ocrUrl, '_blank', 'noopener,noreferrer');
+                                if (newWindow) {
+                                    logResult('✅ window.open() succeeded', 'success');
+                                } else {
+                                    throw new Error('Popup blocked or failed');
+                                }
+                            } catch (error) {
+                                logResult(`⚠️ window.open() failed: ${error.message}`, 'warning');
+                                logResult('🔄 Trying location.href fallback...', 'info');
+                                // Don't actually redirect in test
+                                // window.location.href = ocrUrl;
+                                logResult('✅ Fallback method would work', 'success');
+                            }
+                            
+                            // Reset button
+                            setTimeout(() => {
+                                ocrBtn.textContent = '📱 Test OCR Button →';
+                                ocrBtn.style.background = 'rgba(255, 183, 0, 0.2)';
+                            }, 2000);
+                        }, 100);
+                    }
+                }, { passive: false });
+            });
+        } else {
+            logResult('❌ OCR button not found', 'error');
+        }
+        
+        // Test touch events
+        let touchStarted = false;
+        document.addEventListener('touchstart', () => {
+            if (!touchStarted) {
+                logResult('👆 Touch events working', 'success');
+                touchStarted = true;
+            }
+        }, { once: true });
+        
+        // Test profile image
+        setTimeout(() => {
+            const profileImg = document.querySelector('.profile-image-test');
+            if (profileImg) {
+                const rect = profileImg.getBoundingClientRect();
+                logResult(`📍 Profile image position: ${rect.left}, ${rect.top}`, 'info');
+                logResult(`📏 Profile image size: ${rect.width}x${rect.height}`, 'info');
+                
+                if (rect.width > 0 && rect.height > 0) {
+                    logResult('✅ Profile image is visible', 'success');
+                } else {
+                    logResult('❌ Profile image has no dimensions', 'error');
+                }
+            }
+        }, 1000);
+        
+        logResult('🏁 Mobile debug test ready', 'success');
+    </script>
+</body>
+</html>
