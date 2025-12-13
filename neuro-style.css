@@ -462,9 +462,14 @@ body.analog-mode .switch-slider {
 }
 
 .profile-section {
-    display: flex;
-    justify-content: center;
-    margin-bottom: var(--space-xl);
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important; /* Remove margin since it's in profile-header now */
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    flex-shrink: 0 !important;
 }
 
 .profile-image {
@@ -1287,6 +1292,14 @@ body.analog-mode .switch-slider {
     box-shadow: 0 4px 12px rgba(100, 255, 218, 0.3);
 }
 
+/* FORCE OCR BUTTON FUNCTIONALITY */
+.btn-secondary {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
+    position: relative !important;
+}
+
 /* Contact Terminal - Enhanced */
 .contact-terminal {
     padding: var(--space-3xl) var(--space-xl);
@@ -1700,5 +1713,235 @@ html {
 @media (prefers-reduced-motion: no-preference) {
     .reveal-section {
         will-change: opacity, transform;
+    }
+}
+
+/* EMERGENCY PROFILE FIXES - HIGHEST PRIORITY */
+.profile-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 2000 !important;
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50% !important;
+    border: 3px solid var(--electric-cyan) !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    background: rgba(100, 255, 218, 0.1) !important;
+}
+
+/* Force profile header layout */
+.profile-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    margin-bottom: var(--space-xl) !important;
+    flex-wrap: wrap !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1500 !important;
+    width: 100% !important;
+}
+
+/* Ensure profile text is visible */
+.profile-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: var(--space-md) !important;
+    flex: 1 !important;
+    min-width: 300px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1500 !important;
+}
+
+/* Force hero title visibility */
+.hero-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1500 !important;
+    text-align: center !important;
+}
+
+.title-vector {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1500 !important;
+}
+
+/* Ensure architecture labels are visible */
+.architecture-label {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1500 !important;
+}
+
+/* Force hero overlay visibility */
+.hero-overlay {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Disable any transforms that might hide elements */
+.hero-circuit * {
+    transform: none !important;
+}
+
+/* Override any reveal animations for hero section */
+.hero-circuit.reveal-section {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Mobile responsive fixes - ENHANCED */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 1rem !important;
+    }
+    
+    .profile-section {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .profile-image {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 auto !important;
+    }
+    
+    .profile-text {
+        order: 2 !important;
+        align-items: center !important;
+        text-align: center !important;
+        min-width: auto !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+        line-height: 1.1 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .architecture-label {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+    }
+    
+    .layer-chip {
+        font-size: 0.7rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Production styles - clean borders */
+.profile-image {
+    border: 3px solid var(--electric-cyan) !important;
+}
+
+/* Debug borders removed for production */
+
+/* MOBILE BUTTON FIXES */
+@media (max-width: 768px) {
+    .btn-secondary {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.9rem !important;
+        min-height: 44px !important; /* iOS touch target minimum */
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
+    }
+    
+    .project-card {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .project-info {
+        padding: 1rem !important;
+        text-align: center !important;
+    }
+    
+    .project-preview {
+        order: -1 !important;
+        padding: 1rem !important;
+    }
+}
+
+/* FORCE OCR BUTTON VISIBILITY */
+.btn-secondary[href*="ocr"] {
+    background: rgba(100, 255, 218, 0.05) !important;
+    border: 2px solid #64ffda !important;
+    font-weight: 600 !important;
+    position: relative !important;
+    z-index: 3000 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.btn-secondary[href*="ocr"]:hover,
+.btn-secondary[href*="ocr"]:focus,
+.btn-secondary[href*="ocr"]:active {
+    background: rgba(100, 255, 218, 0.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.4) !important;
+}
+
+/* EMERGENCY MOBILE PROFILE FIXES */
+@media (max-width: 480px) {
+    .profile-header {
+        padding: 0.5rem !important;
+        gap: 1rem !important;
+    }
+    
+    .profile-image {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .title-vector {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-overlay {
+        padding: 1rem !important;
+        margin: 0.5rem !important;
+        max-width: calc(100% - 1rem) !important;
     }
 }

@@ -21,19 +21,147 @@ class NeuralInterface {
     
     // Fix button click issues
     initButtonFixes() {
+        console.log('🔧 Initializing button fixes...');
+        
+        // Wait for DOM to be fully loaded
+        setTimeout(() => {
+            this.setupButtonHandlers();
+        }, 500);
+        
+        // Also setup on window load as backup
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                this.setupButtonHandlers();
+            }, 1000);
+        });
+    }
+    
+    setupButtonHandlers() {
+        console.log('🔧 Setting up button handlers...');
+        
         // Ensure all project buttons work
-        document.querySelectorAll('.btn-secondary').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const href = button.getAttribute('href');
+        document.querySelectorAll('.btn-secondary').forEach((button, index) => {
+            console.log(`🔗 Setting up button ${index + 1}:`, button.href);
+            
+            // Force button to be clickable
+            button.style.cssText += `
+                pointer-events: auto !important;
+                cursor: pointer !important;
+                z-index: 2000 !important;
+                position: relative !important;
+            `;
+            
+            // Remove any existing event listeners
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+            
+            // Add new event listener
+            newButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const href = newButton.getAttribute('href');
+                console.log('🚀 Button clicked, opening:', href);
+                
                 if (href && href.startsWith('http')) {
-                    console.log('🔗 Opening link:', href);
-                    // Force open in new tab
                     window.open(href, '_blank', 'noopener,noreferrer');
-                    e.preventDefault();
+                    
+                    // Visual feedback
+                    const originalText = newButton.textContent;
+                    newButton.textContent = 'Opening...';
+                    newButton.style.background = 'rgba(100, 255, 218, 0.2)';
+                    
+                    setTimeout(() => {
+                        newButton.textContent = originalText;
+                        newButton.style.background = 'transparent';
+                    }, 1500);
                 }
             });
         });
+        
+        // Special OCR button handling
+        this.setupOcrButton();
     }
+    
+    setupOcrButton() {
+        const ocrSelectors = [
+            'a[href*="johnkibre/ocr"]',
+            'a[href*="github.com/johnkibre/ocr"]',
+            '.btn-secondary[href*="ocr"]',
+            'a[href="https://github.com/johnkibre/ocr"]'
+        ];
+        
+        let ocrButton = null;
+        for (const selector of ocrSelectors) {
+            ocrButton = document.querySelector(selector);
+            if (ocrButton) {
+                console.log('🎯 OCR button found with selector:', selector, ocrButton.href);
+                break;
+            }
+        }
+        
+        if (ocrButton) {
+            // Force OCR button to be super clickable
+            ocrButton.style.cssText += `
+                pointer-events: auto !important;
+                cursor: pointer !important;
+                z-index: 3000 !important;
+                position: relative !important;
+                background: rgba(100, 255, 218, 0.05) !important;
+                border: 2px solid #64ffda !important;
+            `;
+            
+            // Clone to remove all existing listeners
+            const newOcrButton = ocrButton.cloneNode(true);
+            ocrButton.parentNode.replaceChild(newOcrButton, ocrButton);
+            
+            // Add multiple event types for maximum compatibility
+            ['click', 'mousedown', 'touchstart'].forEach(eventType => {
+                newOcrButton.addEventListener(eventType, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('🎯 OCR button activated via:', eventType);
+                    
+                    // Force open OCR repository
+                    const ocrUrl = 'https://github.com/johnkibre/ocr';
+                    console.log('🚀 Opening OCR repository:', ocrUrl);
+                    
+                    // Try multiple methods to open
+                    try {
+                        window.open(ocrUrl, '_blank', 'noopener,noreferrer');
+                    } catch (error) {
+                        console.error('Window.open failed, trying location:', error);
+                        window.location.href = ocrUrl;
+                    }
+                    
+                    // Visual feedback
+                    newOcrButton.textContent = 'Opening OCR...';
+                    newOcrButton.style.background = 'rgba(100, 255, 218, 0.3)';
+                    
+                    setTimeout(() => {
+                        newOcrButton.textContent = 'View Code →';
+                        newOcrButton.style.background = 'rgba(100, 255, 218, 0.05)';
+                    }, 2000);
+                });
+            });
+            
+            console.log('✅ OCR button setup complete');
+        } else {
+            console.error('❌ OCR button not found with any selector');
+            
+            // Debug: List all buttons
+            const allButtons = document.querySelectorAll('a, button');
+            console.log('🔍 All buttons found:', allButtons.length);
+            allButtons.forEach((btn, i) => {
+                if (btn.href && btn.href.includes('ocr')) {
+                    console.log(`Button ${i}:`, btn.href, btn.textContent);
+                }
+            });
+        }
+    }
+    
+
     
     // Performance: Intersection Observer for scroll animations
     initIntersectionObserver() {
@@ -69,50 +197,15 @@ class NeuralInterface {
             heroSection.style.visibility = 'visible';
         }
         
-        // Force profile image and title visibility
-        const profileImg = document.querySelector('.profile-image');
-        const heroTitle = document.querySelector('.hero-title');
-        const profileSection = document.querySelector('.profile-section');
-        const heroOverlay = document.querySelector('.hero-overlay');
+        // Force profile visibility with aggressive approach
+        this.forceProfileVisibility();
         
-        // Special handling for profile image
-        if (profileImg) {
-            console.log('🖼️ Profile image found, forcing visibility...');
-            profileImg.style.opacity = '1';
-            profileImg.style.visibility = 'visible';
-            profileImg.style.display = 'block';
-            profileImg.style.position = 'relative';
-            profileImg.style.zIndex = '1000';
-            profileImg.style.width = '150px';
-            profileImg.style.height = '150px';
-            profileImg.style.background = 'rgba(100, 255, 218, 0.2)';
-            
-            // Force reload image if it fails
-            profileImg.onerror = function() {
-                console.error('❌ Profile image failed, trying reload...');
-                setTimeout(() => {
-                    this.src = this.src.split('?')[0] + '?reload=' + Date.now();
-                }, 1000);
-            };
-            
-            profileImg.onload = function() {
-                console.log('✅ Profile image loaded successfully!');
-                this.style.background = 'transparent';
-            };
-        } else {
-            console.error('❌ Profile image element not found!');
+        // Check if mobile and force layout
+        if (window.innerWidth < 768) {
+            setTimeout(() => {
+                this.forceMobileLayout();
+            }, 500);
         }
-        
-        // Handle other elements
-        [heroTitle, profileSection, heroOverlay].forEach(element => {
-            if (element) {
-                element.style.opacity = '1';
-                element.style.visibility = 'visible';
-                element.style.display = element === heroTitle ? 'block' : 'flex';
-                element.style.position = 'relative';
-                element.style.zIndex = '100';
-            }
-        });
         
         this.observers.set('reveal', revealObserver);
         
@@ -376,6 +469,16 @@ class NeuralInterface {
             }, 250);
         }, { passive: true });
         
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.handleResize();
+                if (window.innerWidth < 768) {
+                    this.forceMobileLayout();
+                }
+            }, 500);
+        });
+        
         // Optimize scroll events
         let ticking = false;
         window.addEventListener('scroll', () => {
@@ -441,9 +544,64 @@ class NeuralInterface {
         const isMobile = window.innerWidth < 768;
         document.body.classList.toggle('mobile', isMobile);
         
+        // Force mobile profile layout
+        if (isMobile) {
+            this.forceMobileLayout();
+        }
+        
         // Update Three.js canvas if it exists
         if (window.threeCore) {
             window.threeCore.handleResize();
+        }
+    }
+    
+    forceMobileLayout() {
+        console.log('📱 Forcing mobile layout...');
+        
+        const profileHeader = document.querySelector('.profile-header');
+        const profileSection = document.querySelector('.profile-section');
+        const profileText = document.querySelector('.profile-text');
+        const profileImage = document.querySelector('.profile-image');
+        
+        if (profileHeader) {
+            profileHeader.style.cssText += `
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1.5rem !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 100% !important;
+                padding: 1rem !important;
+            `;
+        }
+        
+        if (profileSection) {
+            profileSection.style.cssText += `
+                order: 1 !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                margin-bottom: 1rem !important;
+            `;
+        }
+        
+        if (profileImage) {
+            profileImage.style.cssText += `
+                width: 120px !important;
+                height: 120px !important;
+                margin: 0 auto !important;
+            `;
+        }
+        
+        if (profileText) {
+            profileText.style.cssText += `
+                order: 2 !important;
+                align-items: center !important;
+                text-align: center !important;
+                min-width: auto !important;
+                width: 100% !important;
+                flex: none !important;
+            `;
         }
     }
     
@@ -477,6 +635,191 @@ class NeuralInterface {
         
         setTimeout(() => {
             document.body.removeChild(announcement);
+        }, 1000);
+    }
+    
+    // Force profile visibility with aggressive approach
+    forceProfileVisibility() {
+        console.log('🔧 Forcing profile visibility...');
+        
+        // Get all critical elements
+        const profileImg = document.querySelector('.profile-image');
+        const heroTitle = document.querySelector('.hero-title');
+        const profileSection = document.querySelector('.profile-section');
+        const profileHeader = document.querySelector('.profile-header');
+        const profileText = document.querySelector('.profile-text');
+        const heroOverlay = document.querySelector('.hero-overlay');
+        const titleVectors = document.querySelectorAll('.title-vector');
+        const architectureLabel = document.querySelector('.architecture-label');
+        
+        // Force profile image visibility
+        if (profileImg) {
+            console.log('🖼️ Profile image found, applying aggressive visibility...');
+            
+            // Remove any conflicting styles
+            profileImg.style.cssText = `
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 2000 !important;
+                width: 150px !important;
+                height: 150px !important;
+                border-radius: 50% !important;
+                border: 3px solid #64ffda !important;
+                object-fit: cover !important;
+                flex-shrink: 0 !important;
+                margin: 0 !important;
+                background: rgba(100, 255, 218, 0.1) !important;
+                transform: none !important;
+                animation: none !important;
+            `;
+            
+            // Force image reload with cache busting
+            const originalSrc = profileImg.src;
+            profileImg.src = originalSrc.split('?')[0] + '?force=' + Date.now();
+            
+            profileImg.onload = function() {
+                console.log('✅ Profile image loaded successfully!');
+                this.style.background = 'transparent';
+                this.style.border = '3px solid #64ffda';
+            };
+            
+            profileImg.onerror = function() {
+                console.error('❌ Profile image failed, showing fallback...');
+                this.style.background = 'linear-gradient(135deg, #64ffda, #ffb700)';
+                this.style.border = '3px solid #64ffda';
+                this.alt = 'Profile Image (Loading...)';
+            };
+        } else {
+            console.error('❌ Profile image element not found!');
+        }
+        
+        // Force profile header layout
+        if (profileHeader) {
+            console.log('📦 Profile header found, forcing layout...');
+            profileHeader.style.cssText = `
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 2rem !important;
+                margin-bottom: 2rem !important;
+                flex-wrap: wrap !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 1500 !important;
+                width: 100% !important;
+                transform: none !important;
+            `;
+        }
+        
+        // Force profile section
+        if (profileSection) {
+            console.log('🎯 Profile section found, forcing visibility...');
+            profileSection.style.cssText = `
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 2000 !important;
+                flex-shrink: 0 !important;
+                margin: 0 !important;
+                transform: none !important;
+            `;
+        }
+        
+        // Force profile text
+        if (profileText) {
+            console.log('📝 Profile text found, forcing visibility...');
+            profileText.style.cssText = `
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 1rem !important;
+                flex: 1 !important;
+                min-width: 300px !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 1500 !important;
+                transform: none !important;
+            `;
+        }
+        
+        // Force hero title visibility
+        if (heroTitle) {
+            console.log('📛 Hero title found, forcing visibility...');
+            heroTitle.style.cssText = `
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 1500 !important;
+                text-align: center !important;
+                transform: none !important;
+                animation: none !important;
+            `;
+        }
+        
+        // Force title vectors
+        titleVectors.forEach((vector, index) => {
+            console.log(`🔤 Title vector ${index + 1} found, forcing visibility...`);
+            vector.style.cssText = `
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 1500 !important;
+                transform: none !important;
+                animation: none !important;
+            `;
+        });
+        
+        // Force architecture label
+        if (architectureLabel) {
+            console.log('🏗️ Architecture label found, forcing visibility...');
+            architectureLabel.style.cssText = `
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 1500 !important;
+                justify-content: center !important;
+                gap: 1rem !important;
+                flex-wrap: wrap !important;
+                transform: none !important;
+            `;
+        }
+        
+        // Force hero overlay
+        if (heroOverlay) {
+            console.log('🎭 Hero overlay found, forcing visibility...');
+            heroOverlay.style.cssText = `
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                z-index: 100 !important;
+                transform: none !important;
+            `;
+        }
+        
+        // Double-check after a delay
+        setTimeout(() => {
+            console.log('🔍 Double-checking profile visibility...');
+            
+            if (profileImg && (profileImg.style.display === 'none' || profileImg.style.visibility === 'hidden' || profileImg.style.opacity === '0')) {
+                console.warn('⚠️ Profile image still hidden, re-applying styles...');
+                this.forceProfileVisibility();
+            }
+            
+            if (heroTitle && (heroTitle.style.display === 'none' || heroTitle.style.visibility === 'hidden' || heroTitle.style.opacity === '0')) {
+                console.warn('⚠️ Hero title still hidden, re-applying styles...');
+                this.forceProfileVisibility();
+            }
         }, 1000);
     }
     
@@ -674,11 +1017,24 @@ class ContactForm {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Neural Portfolio Initializing...');
+    
     // Initialize neural interface
     window.neuralInterface = new NeuralInterface();
     
     // Initialize contact form
     window.contactForm = new ContactForm();
+    
+    // Force mobile layout check after everything loads
+    setTimeout(() => {
+        if (window.innerWidth < 768) {
+            console.log('📱 Mobile detected, forcing layout...');
+            window.neuralInterface.forceMobileLayout();
+        }
+        
+        // Force button setup
+        window.neuralInterface.setupButtonHandlers();
+    }, 1500);
     
     // Performance monitoring
     if ('performance' in window) {
