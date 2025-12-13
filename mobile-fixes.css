@@ -1,0 +1,317 @@
+/* ==========================================================================
+   CLEAN MOBILE RESPONSIVENESS FIXES
+   ========================================================================== */
+
+/* Remove all existing mobile media queries and replace with this clean approach */
+
+/* Base Mobile-First Styles (applies to all screen sizes) */
+.hero-overlay {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.profile-section {
+    flex-shrink: 0;
+}
+
+.profile-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINT: 768px and below
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* Container and Layout */
+    .hero-circuit {
+        padding: 1rem;
+        min-height: auto;
+    }
+    
+    .circuit-container {
+        padding: 1rem;
+        height: auto;
+        min-height: 60vh;
+    }
+    
+    .hero-overlay {
+        max-width: 100%;
+        margin: 0;
+        padding: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Profile Section - Clean Stacking */
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .profile-section {
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+    
+    .profile-text {
+        order: 2;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        min-width: auto;
+        flex: none;
+    }
+    
+    /* Typography Scaling */
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .title-vector {
+        font-size: inherit;
+    }
+    
+    /* Architecture Labels */
+    .architecture-label {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .layer-chip {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    /* Navigation */
+    .nav-pathways {
+        display: none;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .mode-toggle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Hero Subtitle */
+    .hero-subtitle {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .subtitle-divider {
+        display: none;
+    }
+    
+    /* Description Lines */
+    .description-line {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .description-prefix {
+        min-width: auto;
+        font-size: 0.85rem;
+    }
+    
+    .description-text {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    /* Controls and Stats */
+    .cube-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+    
+    .neuro-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    /* Buttons */
+    .btn-secondary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        min-height: 44px; /* iOS touch target */
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        touch-action: manipulation;
+    }
+    
+    /* Project Cards */
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .project-preview {
+        order: -1;
+        padding: 1rem;
+    }
+    
+    .project-info {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    /* Contact Info */
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+/* ==========================================================================
+   SMALL MOBILE: 480px and below
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    
+    .hero-overlay {
+        padding: 1rem;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
+    }
+    
+    .layer-chip {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .control-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .btn-secondary {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        min-height: 44px;
+    }
+    
+    .neuro-stats {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .stat-register {
+        padding: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   PREVENT HORIZONTAL SCROLL
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    /* Ensure no element causes horizontal scroll */
+    .hero-circuit,
+    .circuit-container,
+    .hero-overlay,
+    .profile-header,
+    .skills-grid,
+    .project-grid,
+    .certificates-grid {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* ==========================================================================
+   TOUCH IMPROVEMENTS
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* Better touch targets */
+    button,
+    .btn-secondary,
+    .control-btn,
+    .nav-node {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Touch feedback */
+    .btn-secondary:active,
+    .control-btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Remove hover effects on touch devices */
+    @media (hover: none) {
+        .btn-secondary:hover,
+        .control-btn:hover,
+        .project-card:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}

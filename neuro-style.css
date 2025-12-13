@@ -1577,26 +1577,95 @@ body.analog-mode * {
     }
 }
 
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
+/* ==========================================================================
+   CLEAN MOBILE RESPONSIVENESS - SINGLE SOURCE OF TRUTH
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* Layout Container */
+    .hero-circuit {
+        padding: 1rem;
+        min-height: auto;
     }
     
-    .neuro-stats {
-        grid-template-columns: repeat(2, 1fr);
+    .circuit-container {
+        padding: 1rem;
+        height: auto;
+        min-height: 60vh;
     }
     
-    .cube-controls {
+    .hero-overlay {
+        max-width: 100%;
+        margin: 0;
+        padding: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Profile Section - Clean Stacking */
+    .profile-header {
         flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
     }
     
+    .profile-section {
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+    
+    .profile-text {
+        order: 2;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: auto;
+        flex: none;
+    }
+    
+    /* Typography */
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .architecture-label {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .layer-chip {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    /* Navigation */
     .nav-pathways {
         display: none;
     }
     
     .nav-container {
         flex-direction: column;
-        gap: var(--space-md);
+        gap: 1rem;
+        padding: 0 1rem;
     }
     
     .mode-toggle {
@@ -1610,49 +1679,131 @@ body.analog-mode * {
         justify-content: center;
     }
     
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-    }
-    
+    /* Hero Content */
     .hero-subtitle {
         flex-direction: column;
         text-align: center;
+        gap: 0.5rem;
     }
     
     .subtitle-divider {
         display: none;
     }
     
-    /* RESPONSIVE: Stack profile on mobile */
-    .profile-header {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 1.5rem !important;
+    .description-line {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.25rem;
+        margin-bottom: 0.75rem;
     }
     
-    .profile-text {
-        align-items: center !important;
-        text-align: center !important;
+    .description-prefix {
+        min-width: auto;
+        font-size: 0.85rem;
+    }
+    
+    /* Controls */
+    .cube-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        min-height: 44px;
+    }
+    
+    .neuro-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    /* Buttons */
+    .btn-secondary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        min-height: 44px;
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        touch-action: manipulation;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    /* Project Cards */
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .project-preview {
+        order: -1;
+        padding: 1rem;
+    }
+    
+    .project-info {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    /* Contact */
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    /* Prevent Horizontal Scroll */
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 0 var(--space-md);
-    }
-    
+/* Small Mobile Breakpoint */
+@media screen and (max-width: 480px) {
     .hero-overlay {
-        padding: var(--space-md);
+        padding: 1rem;
     }
     
-    .architecture-label {
-        justify-content: center;
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
     }
     
     .layer-chip {
         font-size: 0.7rem;
-        padding: var(--space-xs) var(--space-sm);
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .neuro-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-secondary {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
     }
 }
 
@@ -1810,58 +1961,7 @@ html {
     visibility: visible !important;
 }
 
-/* Mobile responsive fixes - ENHANCED */
-@media (max-width: 768px) {
-    .profile-header {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 1.5rem !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        padding: 1rem !important;
-    }
-    
-    .profile-section {
-        order: 1 !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .profile-image {
-        width: 120px !important;
-        height: 120px !important;
-        margin: 0 auto !important;
-    }
-    
-    .profile-text {
-        order: 2 !important;
-        align-items: center !important;
-        text-align: center !important;
-        min-width: auto !important;
-        width: 100% !important;
-        flex: none !important;
-    }
-    
-    .hero-title {
-        font-size: 1.8rem !important;
-        line-height: 1.1 !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .architecture-label {
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-        gap: 0.5rem !important;
-    }
-    
-    .layer-chip {
-        font-size: 0.7rem !important;
-        padding: 0.25rem 0.5rem !important;
-    }
-}
+
 
 /* Production styles - clean borders */
 .profile-image {
@@ -1870,53 +1970,7 @@ html {
 
 /* Debug borders removed for production */
 
-/* MOBILE BUTTON FIXES */
-@media (max-width: 768px) {
-    .btn-secondary {
-        padding: 0.75rem 1.5rem !important;
-        font-size: 0.9rem !important;
-        min-height: 44px !important; /* iOS touch target minimum */
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
-    }
-    
-    .project-card {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-    }
-    
-    .project-info {
-        padding: 1rem !important;
-        text-align: center !important;
-    }
-    
-    .project-preview {
-        order: -1 !important;
-        padding: 1rem !important;
-    }
-}
 
-/* FORCE OCR BUTTON VISIBILITY */
-.btn-secondary[href*="ocr"] {
-    background: rgba(100, 255, 218, 0.05) !important;
-    border: 2px solid #64ffda !important;
-    font-weight: 600 !important;
-    position: relative !important;
-    z-index: 3000 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
-
-.btn-secondary[href*="ocr"]:hover,
-.btn-secondary[href*="ocr"]:focus,
-.btn-secondary[href*="ocr"]:active {
-    background: rgba(100, 255, 218, 0.2) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.4) !important;
-}
 
 /* EMERGENCY MOBILE PROFILE FIXES */
 @media (max-width: 480px) {
@@ -1945,217 +1999,36 @@ html {
         max-width: calc(100% - 1rem) !important;
     }
 }
-/* AGGRESSIVE MOBILE FIXES - HIGHEST PRIORITY */
-@media screen and (max-width: 768px) {
-    /* Force mobile layout */
-    .hero-circuit {
-        padding: 1rem !important;
-        min-height: auto !important;
+/* Touch and Mobile Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn-secondary:hover,
+    .control-btn:hover,
+    .project-card:hover {
+        transform: none;
+        box-shadow: none;
     }
     
-    .hero-overlay {
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 1rem !important;
-    }
-    
-    .profile-header {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        gap: 1.5rem !important;
-        width: 100% !important;
-        padding: 1rem !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    .profile-section {
-        order: 1 !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        margin: 0 0 1rem 0 !important;
-    }
-    
-    .profile-image {
-        width: 120px !important;
-        height: 120px !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        margin: 0 auto !important;
-        border: 3px solid #64ffda !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
-        position: relative !important;
-        z-index: 1000 !important;
-        flex-shrink: 0 !important;
-    }
-    
-    .profile-text {
-        order: 2 !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        margin: 0 !important;
-        flex: none !important;
-    }
-    
-    .hero-title {
-        font-size: 1.8rem !important;
-        text-align: center !important;
-        margin: 1rem 0 !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        line-height: 1.2 !important;
-    }
-    
-    .title-vector {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        font-size: 1.8rem !important;
-    }
-    
-    .architecture-label {
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-        gap: 0.5rem !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .layer-chip {
-        font-size: 0.7rem !important;
-        padding: 0.25rem 0.5rem !important;
-    }
-    
-    /* Mobile button fixes */
-    .btn-secondary {
-        min-height: 48px !important;
-        padding: 12px 24px !important;
-        font-size: 16px !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
-        background: rgba(100, 255, 218, 0.1) !important;
-        border: 2px solid #64ffda !important;
-        pointer-events: auto !important;
-        cursor: pointer !important;
-        z-index: 3000 !important;
-        position: relative !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: auto !important;
-        margin: 0.5rem 0 !important;
-    }
-    
-    /* Special OCR button styling for mobile */
-    .btn-secondary[href*="ocr"] {
-        background: rgba(255, 183, 0, 0.2) !important;
-        border: 3px solid #ffb700 !important;
-        color: #ffb700 !important;
-        font-weight: bold !important;
-        min-height: 50px !important;
-        font-size: 18px !important;
-        z-index: 5000 !important;
-        box-shadow: 0 4px 12px rgba(255, 183, 0, 0.3) !important;
-    }
-    
-    .btn-secondary[href*="ocr"]:active,
-    .btn-secondary[href*="ocr"]:focus {
-        background: rgba(255, 183, 0, 0.4) !important;
-        transform: scale(0.95) !important;
-    }
-    
-    /* Project cards mobile layout */
-    .project-card {
-        grid-template-columns: 1fr !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    .project-info {
-        padding: 1rem !important;
-        text-align: center !important;
-    }
-    
-    .project-preview {
-        order: -1 !important;
-        padding: 1rem !important;
+    .btn-secondary:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
     }
 }
 
-/* Extra small mobile devices */
-@media screen and (max-width: 480px) {
-    .profile-image {
-        width: 100px !important;
-        height: 100px !important;
-    }
-    
-    .hero-title {
-        font-size: 1.5rem !important;
-    }
-    
-    .title-vector {
-        font-size: 1.5rem !important;
-    }
-    
-    .btn-secondary {
-        font-size: 14px !important;
-        padding: 10px 20px !important;
-        min-height: 44px !important;
-    }
-    
-    .btn-secondary[href*="ocr"] {
-        font-size: 16px !important;
-        min-height: 48px !important;
-    }
+/* OCR Button Enhancement for All Devices */
+.btn-secondary[href*="ocr"] {
+    background: rgba(100, 255, 218, 0.05);
+    border: 2px solid #64ffda;
+    font-weight: 600;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
-/* iOS Safari specific fixes */
-@supports (-webkit-touch-callout: none) {
-    .btn-secondary {
-        -webkit-appearance: none !important;
-        -webkit-tap-highlight-color: rgba(100, 255, 218, 0.3) !important;
-        -webkit-user-select: none !important;
-    }
-    
-    .profile-image {
-        -webkit-transform: translateZ(0) !important;
-        transform: translateZ(0) !important;
-    }
-}
-
-/* Android Chrome specific fixes */
-@media screen and (-webkit-min-device-pixel-ratio: 1) {
-    .btn-secondary {
-        touch-action: manipulation !important;
-    }
-}
-
-/* Force visibility on all mobile devices */
-@media (max-width: 768px) {
-    .profile-header,
-    .profile-section,
-    .profile-image,
-    .profile-text,
-    .hero-title,
-    .title-vector {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-    }
-    
-    .profile-header {
-        display: flex !important;
-    }
-    
-    .profile-text {
-        display: flex !important;
-    }
+.btn-secondary[href*="ocr"]:hover,
+.btn-secondary[href*="ocr"]:focus,
+.btn-secondary[href*="ocr"]:active {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.4);
 }
