@@ -230,29 +230,34 @@
                 <div class="three-canvas" id="threeContainer" aria-hidden="true"></div>
                 
                 <div class="hero-overlay">
-                    <div class="profile-section">
-                        <img src="assets/images/profile.jpg?t=20241213" 
-                             alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
-                             class="profile-image"
-                             width="150" 
-                             height="150"
-                             style="display: block !important; opacity: 1 !important; visibility: visible !important; position: relative !important; z-index: 1000 !important;"
-                             onload="console.log('✅ Profile loaded:', this.src); this.style.background='transparent';"
-                             onerror="console.error('❌ Profile failed:', this.src); this.style.background='rgba(100,255,218,0.3)'; this.style.border='3px solid #64ffda';">
-                        <!-- Fallback div if image fails -->
-                        <div class="profile-fallback" style="display: none; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #64ffda, #ffb700); border: 3px solid #64ffda; position: absolute; top: 0; left: 0; z-index: 999;"></div>
+                    <!-- FIXED: Profile and Name in Same Container -->
+                    <div class="profile-header">
+                        <div class="profile-section">
+                            <img src="assets/images/profile.jpg?t=20241213" 
+                                 alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
+                                 class="profile-image"
+                                 width="150" 
+                                 height="150"
+                                 style="display: block !important; opacity: 1 !important; visibility: visible !important; position: relative !important; z-index: 1000 !important;"
+                                 onload="console.log('✅ Profile loaded:', this.src); this.style.background='transparent';"
+                                 onerror="console.error('❌ Profile failed:', this.src); this.style.background='rgba(100,255,218,0.3)'; this.style.border='3px solid #64ffda';">
+                            <!-- Fallback div if image fails -->
+                            <div class="profile-fallback" style="display: none; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #64ffda, #ffb700); border: 3px solid #64ffda; position: absolute; top: 0; left: 0; z-index: 999;"></div>
+                        </div>
+                        
+                        <div class="profile-text">
+                            <div class="architecture-label" role="list" aria-label="Technical specializations">
+                                <span class="layer-chip layer-frontend" role="listitem">FRONTEND</span>
+                                <span class="layer-chip layer-backend" role="listitem">BACKEND</span>
+                                <span class="layer-chip layer-hardware" role="listitem">ECE CORE</span>
+                            </div>
+                            
+                            <h1 class="hero-title" id="hero-title">
+                                <span class="title-vector">YOHANNES</span>
+                                <span class="title-vector">KIBREKIDUSAN</span>
+                            </h1>
+                        </div>
                     </div>
-                    
-                    <div class="architecture-label" role="list" aria-label="Technical specializations">
-                        <span class="layer-chip layer-frontend" role="listitem">FRONTEND</span>
-                        <span class="layer-chip layer-backend" role="listitem">BACKEND</span>
-                        <span class="layer-chip layer-hardware" role="listitem">ECE CORE</span>
-                    </div>
-                    
-                    <h1 class="hero-title" id="hero-title">
-                        <span class="title-vector">YOHANNES</span>
-                        <span class="title-vector">KIBREKIDUSAN</span>
-                    </h1>
                     
                     <div class="hero-subtitle">
                         <span class="subtitle-component" data-component="hardware">HARDWARE ARCHITECT</span>

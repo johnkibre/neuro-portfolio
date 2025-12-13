@@ -476,17 +476,13 @@ body.analog-mode .switch-slider {
     object-fit: cover;
     transition: all var(--timing-base) var(--ease-out);
     animation: profileGlow 3s ease-in-out infinite;
-    /* FORCE VISIBILITY - AGGRESSIVE */
+    /* FORCE VISIBILITY */
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     position: relative !important;
     z-index: 1000 !important;
-    max-width: none !important;
-    max-height: none !important;
-    min-width: 150px !important;
-    min-height: 150px !important;
-    background: rgba(100, 255, 218, 0.1) !important;
+    flex-shrink: 0 !important;
 }
 
 .profile-image:hover {
@@ -797,7 +793,21 @@ body.analog-mode .switch-slider {
     position: relative !important;
 }
 
-/* Force profile section visibility */
+/* NEW: Profile Header Container - SIDE BY SIDE LAYOUT */
+.profile-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    margin-bottom: var(--space-xl) !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* Profile section - just for image */
 .profile-section {
     display: flex !important;
     visibility: visible !important;
@@ -806,10 +816,17 @@ body.analog-mode .switch-slider {
     z-index: 1000 !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
-    height: auto !important;
-    margin-bottom: var(--space-xl) !important;
-    background: rgba(255, 0, 0, 0.1) !important; /* Debug background */
+    flex-shrink: 0 !important; /* Prevent image from shrinking */
+}
+
+/* Profile text container */
+.profile-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: var(--space-md) !important;
+    flex: 1 !important;
+    min-width: 300px !important;
 }
 
 /* Force hero overlay visibility */
@@ -1592,6 +1609,18 @@ body.analog-mode * {
     
     .subtitle-divider {
         display: none;
+    }
+    
+    /* RESPONSIVE: Stack profile on mobile */
+    .profile-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+    }
+    
+    .profile-text {
+        align-items: center !important;
+        text-align: center !important;
     }
 }
 
