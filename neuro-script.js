@@ -75,11 +75,40 @@ class NeuralInterface {
         const profileSection = document.querySelector('.profile-section');
         const heroOverlay = document.querySelector('.hero-overlay');
         
-        [profileImg, heroTitle, profileSection, heroOverlay].forEach(element => {
+        // Special handling for profile image
+        if (profileImg) {
+            console.log('🖼️ Profile image found, forcing visibility...');
+            profileImg.style.opacity = '1';
+            profileImg.style.visibility = 'visible';
+            profileImg.style.display = 'block';
+            profileImg.style.position = 'relative';
+            profileImg.style.zIndex = '1000';
+            profileImg.style.width = '150px';
+            profileImg.style.height = '150px';
+            profileImg.style.background = 'rgba(100, 255, 218, 0.2)';
+            
+            // Force reload image if it fails
+            profileImg.onerror = function() {
+                console.error('❌ Profile image failed, trying reload...');
+                setTimeout(() => {
+                    this.src = this.src.split('?')[0] + '?reload=' + Date.now();
+                }, 1000);
+            };
+            
+            profileImg.onload = function() {
+                console.log('✅ Profile image loaded successfully!');
+                this.style.background = 'transparent';
+            };
+        } else {
+            console.error('❌ Profile image element not found!');
+        }
+        
+        // Handle other elements
+        [heroTitle, profileSection, heroOverlay].forEach(element => {
             if (element) {
                 element.style.opacity = '1';
                 element.style.visibility = 'visible';
-                element.style.display = element === heroTitle ? 'block' : (element === profileSection || element === heroOverlay ? 'flex' : 'block');
+                element.style.display = element === heroTitle ? 'block' : 'flex';
                 element.style.position = 'relative';
                 element.style.zIndex = '100';
             }

@@ -236,8 +236,11 @@
                              class="profile-image"
                              width="150" 
                              height="150"
-                             onload="console.log('✅ Profile loaded:', this.src)"
-                             onerror="console.error('❌ Profile failed:', this.src)">
+                             style="display: block !important; opacity: 1 !important; visibility: visible !important; position: relative !important; z-index: 1000 !important;"
+                             onload="console.log('✅ Profile loaded:', this.src); this.style.background='transparent';"
+                             onerror="console.error('❌ Profile failed:', this.src); this.style.background='rgba(100,255,218,0.3)'; this.style.border='3px solid #64ffda';">
+                        <!-- Fallback div if image fails -->
+                        <div class="profile-fallback" style="display: none; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #64ffda, #ffb700); border: 3px solid #64ffda; position: absolute; top: 0; left: 0; z-index: 999;"></div>
                     </div>
                     
                     <div class="architecture-label" role="list" aria-label="Technical specializations">
