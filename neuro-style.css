@@ -476,6 +476,12 @@ body.analog-mode .switch-slider {
     object-fit: cover;
     transition: all var(--timing-base) var(--ease-out);
     animation: profileGlow 3s ease-in-out infinite;
+    /* FORCE VISIBILITY */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
 }
 
 .profile-image:hover {
@@ -557,6 +563,12 @@ body.analog-mode .switch-slider {
     perspective: 1000px;
     transform-style: preserve-3d;
     text-align: center;
+    /* FORCE VISIBILITY */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
 }
 
 .title-vector {
@@ -571,6 +583,10 @@ body.analog-mode .switch-slider {
         0 0 40px rgba(255, 183, 0, 0.3);
     animation: titleFloat 4s ease-in-out infinite;
     transition: transform var(--timing-base) var(--ease-out);
+    /* FORCE VISIBILITY */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .title-vector:nth-child(2) {
@@ -755,16 +771,23 @@ body.analog-mode .switch-slider {
     letter-spacing: 0.5px;
 }
 
-/* Reveal Animation System */
+/* Reveal Animation System - FIXED */
 .reveal-section {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all var(--timing-slow) var(--ease-out);
 }
 
 .reveal-section.revealed {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Hero section should NEVER be hidden */
+.hero-circuit {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
 }
 
 /* Section Styling */

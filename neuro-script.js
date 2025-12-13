@@ -37,10 +37,18 @@ class NeuralInterface {
             });
         }, observerOptions);
         
-        // Observe all reveal sections
-        document.querySelectorAll('.reveal-section').forEach(section => {
+        // Observe all reveal sections EXCEPT hero section
+        document.querySelectorAll('.reveal-section:not(.hero-circuit)').forEach(section => {
             revealObserver.observe(section);
         });
+        
+        // Force hero section to be visible immediately
+        const heroSection = document.querySelector('.hero-circuit');
+        if (heroSection) {
+            heroSection.classList.add('revealed');
+            heroSection.style.opacity = '1';
+            heroSection.style.transform = 'none';
+        }
         
         this.observers.set('reveal', revealObserver);
         
