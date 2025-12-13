@@ -107,6 +107,27 @@
         .skip-link:focus {
             top: 6px;
         }
+        
+        /* Emergency layout fixes */
+        .hero-circuit {
+            margin-top: 80px !important;
+            min-height: calc(100vh - 80px) !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .hero-overlay {
+            position: relative !important;
+            z-index: 10 !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .profile-image, .hero-title {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
     </style>
     
     <!-- Preconnect for performance -->
@@ -198,11 +219,11 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <section class="hero-circuit" id="hero" aria-labelledby="hero-title">
-            <div class="circuit-container">
+        <section class="hero-circuit" id="hero" aria-labelledby="hero-title" style="margin-top: 80px !important; padding-top: 2rem !important;">
+            <div class="circuit-container" style="margin-top: 0 !important; padding-top: 2rem !important;">
                 <div class="three-canvas" id="threeContainer" aria-hidden="true"></div>
                 
-                <div class="hero-overlay">
+                <div class="hero-overlay" style="position: relative !important; z-index: 10 !important; margin-top: 2rem !important;">
                     <div class="profile-section">
                         <img src="assets/images/profile.jpg?t=20241213" 
                              alt="Yohannes Kibrekidusan - Hardware/Software Engineer" 
@@ -744,6 +765,15 @@
                     }
                 }, 500);
             }
+            
+            // Emergency: Scroll to hero section if elements are hidden above
+            setTimeout(() => {
+                const heroSection = document.getElementById('hero');
+                if (heroSection) {
+                    console.log('📍 Scrolling to hero section...');
+                    heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 1000);
         });
         
         // Contact form handling with accessibility
