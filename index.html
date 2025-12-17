@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro Portfolio - Analog & Digital Duality</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <h1 class="logo">Neuro</h1>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <button id="duality-toggle" class="toggle-btn">
+                        <span class="analog-label">Analog</span>
+                        <span class="digital-label">Digital</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="analog-layer">
+                    <h2 class="hero-title analog">Neuro<br>Intelligence</h2>
+                    <p class="hero-subtitle analog">Blending Human Creativity<br>with Artificial Precision</p>
+                </div>
+                <div class="digital-layer">
+                    <div class="neural-network">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <pattern id="neuralPattern" patternUnits="userSpaceOnUse" width="50" height="50">
+                                    <circle cx="25" cy="25" r="2" fill="var(--accent-color)" opacity="0.3"/>
+                                    <line x1="25" y1="25" x2="50" y2="25" stroke="var(--accent-color)" stroke-width="1" opacity="0.2"/>
+                                    <line x1="25" y1="25" x2="25" y2="0" stroke="var(--accent-color)" stroke-width="1" opacity="0.2"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#neuralPattern)"/>
+                        </svg>
+                    </div>
+                    <div class="code-snippet digital">
+                        <code>
+                            function neuroThink() {<br>
+                            &nbsp;&nbsp;return humanCreativity + aiPrecision;<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project analog-project">
+                    <div class="project-content">
+                        <h3>Creative AI Solutions</h3>
+                        <p>Human-centered design meets artificial intelligence to create intuitive, empathetic user experiences.</p>
+                        <div class="project-image">
+                            <img src="neuro-portfolio/assets/images/ai and empoerment universty of marylan.jpg" alt="AI Empowerment Project">
+                        </div>
+                        <a href="#" class="project-link analog-link">Explore Creative Work</a>
+                    </div>
+                </div>
+                <div class="project digital-project">
+                    <div class="project-content">
+                        <h3>Technical Implementations</h3>
+                        <p>Robust, scalable code architectures that power the next generation of intelligent systems.</p>
+                        <div class="project-image">
+                            <img src="neuro-portfolio/assets/images/CS50AI with python harvard universty.png" alt="CS50 AI Project">
+                        </div>
+                        <a href="#" class="project-link digital-link">View Technical Details</a>
+                    </div>
+                </div>
+                <div class="project analog-project">
+                    <div class="project-content">
+                        <h3>Ethiopia Tourism Platform</h3>
+                        <p>Beautiful, culturally sensitive web experiences showcasing Ethiopia's rich heritage.</p>
+                        <div class="project-image">
+                            <img src="neuro-portfolio/assets/images/Ethiopia tourism.png" alt="Ethiopia Tourism Project">
+                        </div>
+                        <a href="#" class="project-link analog-link">Discover the Story</a>
+                    </div>
+                </div>
+                <div class="project digital-project">
+                    <div class="project-content">
+                        <h3>OCR & Data Processing</h3>
+                        <p>Advanced optical character recognition systems with machine learning optimization.</p>
+                        <div class="project-image">
+                            <img src="neuro-portfolio/assets/images/ocr1.png" alt="OCR Project">
+                        </div>
+                        <a href="#" class="project-link digital-link">See Implementation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-line">
+                    <div class="analog-path"></div>
+                    <div class="digital-path"></div>
+                </div>
+                <div class="timeline-events">
+                    <div class="event analog-event">
+                        <div class="event-content">
+                            <h3>Creative Design Lead</h3>
+                            <p>Leading human-centered design initiatives, blending artistic vision with user empathy.</p>
+                            <span class="event-year">2023</span>
+                        </div>
+                    </div>
+                    <div class="event digital-event">
+                        <div class="event-content">
+                            <h3>AI Research Engineer</h3>
+                            <p>Developing cutting-edge machine learning models for computer vision applications.</p>
+                            <span class="event-year">2022</span>
+                        </div>
+                    </div>
+                    <div class="event analog-event">
+                        <div class="event-content">
+                            <h3>UX Research Specialist</h3>
+                            <p>Conducting user studies and ethnographic research to inform product design decisions.</p>
+                            <span class="event-year">2021</span>
+                        </div>
+                    </div>
+                    <div class="event digital-event">
+                        <div class="event-content">
+                            <h3>Full-Stack Developer</h3>
+                            <p>Building scalable web applications with modern technologies and best practices.</p>
+                            <span class="event-year">2020</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <h2>Connect</h2>
+            <div class="social-links">
+                <a href="https://github.com/johnkibre" class="social-link" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/johnkibre" class="social-link" target="_blank">LinkedIn</a>
+                <a href="mailto:johnkibre@example.com" class="social-link">Email</a>
+            </div>
+            <p class="footer-text">&copy; 2024 Neuro Portfolio. Analog meets Digital.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
