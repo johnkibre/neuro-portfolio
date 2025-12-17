@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yohannes Kibrekidusan - Full-Stack Developer & AI Engineer</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Full-Stack Developer & AI Engineer specializing in MERN stack, Python AI/ML, and hardware-software hybrid solutions.">
+    <meta name="keywords" content="full-stack developer, AI engineer, MERN stack, Python, machine learning, electrical engineering">
+    <meta name="author" content="Yohannes Kibrekidusan">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Yohannes Kibrekidusan - Full-Stack Developer & AI Engineer">
+    <meta property="og:description" content="Hardware/Software Hybrid Interface - Full-Stack Developer & AI Engineer with Electrical Engineering Core">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://johnkibre.github.io/neuro-portfolio">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Critical CSS for above-the-fold -->
+    <style>
+        /* Critical styles for instant rendering */
+        body { margin: 0; font-family: 'Inter', sans-serif; background: #0a192f; color: #e6f1ff; line-height: 1.6; }
+        .loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a192f; display: flex; align-items: center; justify-content: center; z-index: 9999; }
+        .loading.hidden { display: none; }
+        .skip-link { position: absolute; top: -40px; left: 6px; background: #64ffda; color: #0a192f; padding: 8px; text-decoration: none; border-radius: 4px; z-index: 10000; }
+        .skip-link:focus { top: 6px; }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Initializing Neural Interface...</p>
+        </div>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-text">YK</span>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul class="nav-list" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#hero" class="nav-link" role="menuitem" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#projects" class="nav-link" role="menuitem">Projects</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#skills" class="nav-link" role="menuitem">Skills</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#about" class="nav-link" role="menuitem">About</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero" aria-labelledby="hero-heading">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 id="hero-heading" class="hero-title">
+                            <span class="hero-title-main">YOHANNES</span>
+                            <span class="hero-title-sub">KIBREKIDUSAN</span>
+                        </h1>
+                        <p class="hero-subtitle">Full-Stack Developer & AI Engineer</p>
+                        <p class="hero-description">
+                            Hardware/Software Hybrid Interface - Specializing in MERN stack, Python AI/ML,
+                            and neural network architectures with 5+ years of experience.
+                        </p>
+
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-target="15">0</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="5">0</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="3">0</span>
+                                <span class="stat-label">Technologies Mastered</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">View My Work</a>
+                            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <img src="assets/images/profile.jpg"
+                             alt="Yohannes Kibrekidusan - Professional headshot"
+                             loading="lazy"
+                             width="300"
+                             height="300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects" aria-labelledby="projects-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">A showcase of my recent work in full-stack development and AI engineering</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Ethiopia Tourism Platform -->
+                    <article class="project-card" itemscope itemtype="https://schema.org/CreativeWork">
+                        <div class="project-image">
+                            <img src="assets/images/Ethiopia tourism.png"
+                                 alt="Ethiopia Tourism Platform - Full-stack MERN application"
+                                 loading="lazy"
+                                 width="400"
+                                 height="300"
+                                 itemprop="image">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" itemprop="name">Ethiopia Tourism Platform</h3>
+                            <p class="project-description" itemprop="description">
+                                Full-stack web application showcasing Ethiopian cultural heritage with database integration,
+                                user authentication, and dynamic content management.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">MERN Stack</span>
+                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/johnkibre/ethiopia-tourism"
+                                   class="btn btn-small"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="View Ethiopia Tourism Platform source code on GitHub">
+                                    <i class="fab fa-github" aria-hidden="true"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: OCR Accessibility App -->
+                    <article class="project-card" itemscope itemtype="https://schema.org/CreativeWork">
+                        <div class="project-image">
+                            <img src="assets/images/ocr1.png"
+                                 alt="OCR Accessibility App - AI-powered text-to-speech solution"
+                                 loading="lazy"
+                                 width="400"
+                                 height="300"
+                                 itemprop="image">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" itemprop="name">OCR Accessibility App</h3>
+                            <p class="project-description" itemprop="description">
+                                AI-powered solution converting printed text to audio for visually impaired users.
+                                Features 100% voice-controlled interface with multilingual support.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">Tesseract</span>
+                                <span class="tech-tag">AI/ML</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/johnkibre/ocr"
+                                   class="btn btn-small"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="View OCR Accessibility App source code on GitHub">
+                                    <i class="fab fa-github" aria-hidden="true"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: HR Gap Analysis Tool -->
+                    <article class="project-card" itemscope itemtype="https://schema.org/CreativeWork">
+                        <div class="project-image">
+                            <img src="assets/images/HRP 1.png"
+                                 alt="HR Gap Analysis Tool - Enterprise workforce planning application"
+                                 loading="lazy"
+                                 width="400"
+                                 height="300"
+                                 itemprop="image">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" itemprop="name">HR Gap Analysis Tool</h3>
+                            <p class="project-description" itemprop="description">
+                                Enterprise workforce planning tool with AI-powered recommendations,
+                                scenario planning, and offline-first capabilities.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">PWA</span>
+                                <span class="tech-tag">Analytics</span>
+                                <span class="tech-tag">Offline-First</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/johnkibre/HR-gap-analysis"
+                                   class="btn btn-small"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="View HR Gap Analysis Tool source code on GitHub">
+                                    <i class="fab fa-github" aria-hidden="true"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">My expertise spans across the full technology stack</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            Frontend Development
+                        </h3>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-item">React & Redux</li>
+                            <li class="skill-item">HTML5 & CSS3</li>
+                            <li class="skill-item">JavaScript (ES6+)</li>
+                            <li class="skill-item">Responsive Design</li>
+                            <li class="skill-item">Three.js (3D Graphics)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-server" aria-hidden="true"></i>
+                            Backend Development
+                        </h3>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-item">Node.js & Express</li>
+                            <li class="skill-item">MongoDB & SQL</li>
+                            <li class="skill-item">RESTful APIs</li>
+                            <li class="skill-item">Authentication</li>
+                            <li class="skill-item">Cloud Deployment</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-brain" aria-hidden="true"></i>
+                            AI & Machine Learning
+                        </h3>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-item">Python & TensorFlow</li>
+                            <li class="skill-item">Computer Vision</li>
+                            <li class="skill-item">OCR Processing</li>
+                            <li class="skill-item">Data Analysis</li>
+                            <li class="skill-item">Neural Networks</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            Hardware & IoT
+                        </h3>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-item">Embedded C/C++</li>
+                            <li class="skill-item">Arduino & Raspberry Pi</li>
+                            <li class="skill-item">Circuit Design</li>
+                            <li class="skill-item">Signal Processing</li>
+                            <li class="skill-item">IoT Systems</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-tools" aria-hidden="true"></i>
+                            DevOps & Tools
+                        </h3>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-item">Git & GitHub</li>
+                            <li class="skill-item">CI/CD Pipelines</li>
+                            <li class="skill-item">Docker & Containers</li>
+                            <li class="skill-item">Linux & Bash</li>
+                            <li class="skill-item">Testing & Debugging</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-palette" aria-hidden="true"></i>
+                            Design & Multimedia
+                        </h3>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-item">UI/UX Design</li>
+                            <li class="skill-item">Video Editing</li>
+                            <li class="skill-item">Unity VR/AR</li>
+                            <li class="skill-item">3D Modeling</li>
+                            <li class="skill-item">Content Creation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="about-heading" class="section-title">About Me</h2>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            I'm a passionate Full-Stack Developer and AI Engineer with a unique background
+                            in Electrical Engineering. My journey began at Addis Ababa University where I
+                            earned my degree in Electrical Engineering, which gave me a solid foundation
+                            in hardware design and systems thinking.
+                        </p>
+                        <p>
+                            Over the past 5+ years, I've been building the bridge between hardware and software,
+                            creating intelligent systems that combine traditional engineering with modern AI/ML
+                            technologies. My expertise spans the entire technology stack - from embedded systems
+                            and IoT devices to complex web applications and neural networks.
+                        </p>
+                        <p>
+                            When I'm not coding, you'll find me exploring new technologies, contributing to
+                            open-source projects, or sharing knowledge with the developer community. I believe
+                            in creating technology that makes a positive impact on people's lives.
+                        </p>
+                    </div>
+
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <h4>🎓 Education</h4>
+                            <p>BSc Electrical Engineering<br>Addis Ababa University</p>
+                        </div>
+                        <div class="highlight">
+                            <h4>💼 Experience</h4>
+                            <p>5+ Years<br>Full-Stack & AI Development</p>
+                        </div>
+                        <div class="highlight">
+                            <h4>🌍 Location</h4>
+                            <p>Ethiopia<br>Remote Work Available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's discuss your next project or collaboration opportunity</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:jhonkibre0912@gmail.com">jhonkibre0912@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/johnkibre"
+                                   target="_blank"
+                                   rel="noopener noreferrer">github.com/johnkibre</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://linkedin.com/in/yohannes-kibrekidusan"
+                                   target="_blank"
+                                   rel="noopener noreferrer">linkedin.com/in/yohannes-kibrekidusan</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Addis Ababa, Ethiopia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text"
+                                       id="name"
+                                       name="name"
+                                       required
+                                       aria-describedby="name-error">
+                                <span id="name-error" class="error-message" role="alert"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email"
+                                       id="email"
+                                       name="email"
+                                       required
+                                       aria-describedby="email-error">
+                                <span id="email-error" class="error-message" role="alert"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text"
+                                       id="subject"
+                                       name="subject"
+                                       required
+                                       aria-describedby="subject-error">
+                                <span id="subject-error" class="error-message" role="alert"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message"
+                                          name="message"
+                                          rows="5"
+                                          required
+                                          aria-describedby="message-error"></textarea>
+                                <span id="message-error" class="error-message" role="alert"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                                    Sending...
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">YK</span>
+                    <span class="footer-tagline">Building the future, one line of code at a time.</span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#hero" class="footer-link">Home</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#skills" class="footer-link">Skills</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://github.com/johnkibre"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Visit my GitHub profile">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yohannes-kibrekidusan"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Visit my LinkedIn profile">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Yohannes Kibrekidusan. All rights reserved.</p>
+                <p>Built with ❤️ using HTML5, CSS3, and JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>
