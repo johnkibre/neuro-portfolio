@@ -8,6 +8,7 @@ export default defineConfig({
   base: '/portfolio-elec/',
   build: {
     outDir: 'dist',
+    emptyOutDir: true,
     sourcemap: false,
     rollupOptions: {
       output: {
