@@ -7,7 +7,7 @@ const Projects = () => {
       description: 'Full-stack web application showcasing Ethiopian cultural heritage with database integration, user authentication, and dynamic content management.',
       tags: ['MERN Stack', 'REST API', 'MongoDB', 'Responsive'],
       tech: 'MERN Stack, MongoDB, REST APIs',
-      image: '/Ethiopia tourism.png'
+      image: '/Ethiopia_tourism.png'
     },
     {
       title: 'OCR Accessibility App',
@@ -21,7 +21,7 @@ const Projects = () => {
       description: 'Enterprise workforce planning tool with AI-powered recommendations, scenario planning, and offline-first capabilities.',
       tags: ['React', 'PWA', 'Analytics', 'AI Recommendations'],
       tech: 'React PWA, Analytics, WCAG 2.1 AA',
-      image: '/HRP 1.png'
+      image: '/HRP_1.png'
     },
     {
       title: 'Virtual Driving License Simulator',
@@ -51,10 +51,10 @@ const Projects = () => {
               transition={{ delay: index * 0.2, type: "spring", stiffness: 100 }}
               whileHover={{
                 scale: 1.08,
-                rotateY: 5,
-                rotateX: -5,
+                rotateY: 15,
+                rotateX: -10,
                 z: 100,
-                boxShadow: '0 35px 60px -12px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4)'
+                boxShadow: '0 35px 60px -12px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4), 0 0 80px rgba(0, 255, 255, 0.2)'
               }}
               className="bg-dark-gray border-2 border-neon-cyan p-6 rounded-lg hover:border-pcb-green transition-all duration-300 cursor-pointer"
               style={{
