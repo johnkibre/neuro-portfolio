@@ -1,30 +1,36 @@
 import { motion } from 'framer-motion'
+import cs50Image from '../assets/images/CS50AI_with_python_harvard_university.png'
+import aiEmpowermentImage from '../assets/images/ai_and_empowerment_university_of_maryland.jpg'
+import googleCloudImage from '../assets/images/google_ai_cloud.jpg'
+import maintenancePdf from '../assets/images/maintenance and networking satcom.pdf'
 
 const Certifications = () => {
+  const fallbackSrc = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDAwIi8+Cjx0ZXh0IHg9IjEwIiB5PSIxNCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzAwZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QzwvdGV4dD4KPHN2Zz4=' // Simple neon 'C' placeholder
+
   const certifications = [
     {
       title: 'CS50\'s Introduction to AI with Python',
       issuer: 'Harvard University',
       year: '2025',
-      image: '/CS50AI with python harvard universty.png'
+      image: cs50Image
     },
     {
       title: 'AI and Career Empowerment',
       issuer: 'University of Maryland',
       year: '2025',
-      image: '/ai and empoerment universty of marylan.jpg'
+      image: aiEmpowermentImage
     },
     {
       title: 'Google Cloud: Prompt Design in Vertex AI',
       issuer: 'Google Cloud',
       year: '2024',
-      image: '/google ai cloud.jpg'
+      image: googleCloudImage
     },
     {
       title: 'Maintenance and Networking',
       issuer: 'SATCOM Institute of Technology',
       year: '2017',
-      image: '/maintenance and networking satcom.pdf'
+      image: maintenancePdf
     }
   ]
 
@@ -78,6 +84,7 @@ const Certifications = () => {
                     alt={`${cert.title} certificate`}
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    onError={(e) => { e.target.src = fallbackSrc; }}
                   />
                 )}
               </div>

@@ -1,92 +1,102 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import ProjectCard from './ProjectCard'
+
+// Import images properly for Vite
+import ethiopiaTruismImg from '../assets/images/Ethiopia truism1.png'
+import ethiopiaTourismImg from '../assets/images/Ethiopia_tourism.png'
+import hrp2Img from '../assets/images/HRP 2.png'
+import hrp1Img from '../assets/images/HRP_1.png'
+import ocrImg from '../assets/images/ocr1.png'
 
 const Projects = () => {
+  const [isAnalogMode, setIsAnalogMode] = useState(false)
+
   const projects = [
     {
-      title: 'Ethiopia Tourism Platform',
-      description: 'Full-stack web application showcasing Ethiopian cultural heritage with database integration, user authentication, and dynamic content management.',
-      tags: ['MERN Stack', 'REST API', 'MongoDB', 'Responsive'],
-      tech: 'MERN Stack, MongoDB, REST APIs',
-      image: '/Ethiopia_tourism.png'
+      title: 'Ethiopia Truism',
+      description: 'A web application that promotes Ethiopian culture and tourism through interactive storytelling and virtual experiences.',
+      tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+      tech: 'React, Node.js, MongoDB, Express',
+      image: ethiopiaTruismImg
     },
     {
-      title: 'OCR Accessibility App',
-      description: 'AI-powered solution converting printed text to audio for visually impaired users. Features 100% voice-controlled interface with multilingual support.',
-      tags: ['Python', 'Flask', 'Tesseract', 'AI/ML'],
-      tech: 'Python, Flask, Tesseract OCR, AI/ML',
-      image: '/ocr1.png'
+      title: 'Ethiopia Tourism',
+      description: 'An e-commerce platform for Ethiopian tourism services, featuring booking systems and cultural content.',
+      tags: ['React', 'Firebase', 'Stripe', 'Tailwind CSS'],
+      tech: 'React, Firebase, Stripe, Tailwind CSS',
+      image: ethiopiaTourismImg
     },
     {
-      title: 'HR Gap Analysis Tool',
-      description: 'Enterprise workforce planning tool with AI-powered recommendations, scenario planning, and offline-first capabilities.',
-      tags: ['React', 'PWA', 'Analytics', 'AI Recommendations'],
-      tech: 'React PWA, Analytics, WCAG 2.1 AA',
-      image: '/HRP_1.png'
+      title: 'HRP System',
+      description: 'Human Resource Planning system with advanced analytics and employee management features.',
+      tags: ['React', 'Python', 'Django', 'PostgreSQL'],
+      tech: 'React, Python, Django, PostgreSQL',
+      image: hrp2Img
     },
     {
-      title: 'Virtual Driving License Simulator',
-      description: 'Unity 3D VR simulator with realistic physics and performance assessment for driving license training.',
-      tags: ['Unity 3D', 'VR', 'Physics Simulation', 'Performance Assessment'],
-      tech: 'Unity 3D, VR, Physics Simulation',
-      image: '/profile.jpg'
+      title: 'OCR Application',
+      description: 'Optical Character Recognition tool with AI-powered text extraction and document processing.',
+      tags: ['Python', 'TensorFlow', 'Flask', 'React'],
+      tech: 'Python, TensorFlow, Flask, React',
+      image: ocrImg
+    },
+    {
+      title: 'Maintenance System',
+      description: 'Comprehensive maintenance tracking system for IT infrastructure and equipment.',
+      tags: ['Vue.js', 'Node.js', 'MySQL', 'Socket.io'],
+      tech: 'Vue.js, Node.js, MySQL, Socket.io',
+      image: hrp1Img
     }
   ]
 
   return (
-    <section className="py-20 px-4">
+    <section className={`py-20 px-4 transition-all duration-500 ${isAnalogMode ? 'bg-amber-50' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-4xl font-mono font-bold text-center mb-12 text-neon-cyan"
-        >
-          Project Chips
-        </motion.h2>
+        <div className="flex justify-center items-center mb-8">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className={`text-4xl font-bold text-center mr-6 ${
+              isAnalogMode ? 'font-serif text-amber-900' : 'font-mono text-neon-cyan'
+            }`}
+          >
+            {isAnalogMode ? 'Analog Circuit Designs' : 'Digital Project Chips'}
+          </motion.h2>
+
+          {/* Analog/Digital Toggle Switch */}
+          <div className="flex items-center space-x-3">
+            <span className={`text-sm font-mono ${isAnalogMode ? 'text-amber-700' : 'text-neon-cyan'}`}>
+              Digital
+            </span>
+            <button
+              onClick={() => setIsAnalogMode(!isAnalogMode)}
+              className={`
+                relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2
+                ${isAnalogMode ? 'bg-amber-600 focus:ring-amber-500' : 'bg-cyan-600 focus:ring-cyan-500'}
+              `}
+            >
+              <span
+                className={`
+                  inline-block h-4 w-4 transform rounded-full bg-white transition-transform
+                  ${isAnalogMode ? 'translate-x-6' : 'translate-x-1'}
+                `}
+              />
+            </button>
+            <span className={`text-sm font-serif ${isAnalogMode ? 'text-amber-900' : 'text-gray-500'}`}>
+              Analog
+            </span>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <ProjectCard
               key={project.title}
-              initial={{ y: 50, opacity: 0, rotateX: -10 }}
-              whileInView={{ y: 0, opacity: 1, rotateX: 0 }}
-              transition={{ delay: index * 0.2, type: "spring", stiffness: 100 }}
-              whileHover={{
-                scale: 1.08,
-                rotateY: 15,
-                rotateX: -10,
-                z: 100,
-                boxShadow: '0 35px 60px -12px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4), 0 0 80px rgba(0, 255, 255, 0.2)'
-              }}
-              className="bg-dark-gray border-2 border-neon-cyan p-6 rounded-lg hover:border-pcb-green transition-all duration-300 cursor-pointer"
-              style={{
-                transformStyle: 'preserve-3d',
-                perspective: '1200px'
-              }}
-            >
-              {project.image && (
-                <img
-                  src={project.image}
-                  alt={`${project.title} screenshot`}
-                  className="w-full h-32 object-cover rounded mb-4 border border-neon-cyan"
-                  loading="lazy"
-                />
-              )}
-              <h3 className="text-xl font-mono font-bold text-pcb-green mb-3">{project.title}</h3>
-              <p className="text-sm font-mono text-neon-cyan mb-4 leading-relaxed">{project.description}</p>
-              <div className="mb-4">
-                <p className="text-xs font-mono text-pcb-green mb-2">Technologies:</p>
-                <p className="text-xs font-mono text-neon-cyan">{project.tech}</p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="bg-pcb-green text-dark-gray px-2 py-1 rounded text-xs font-mono"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+              project={project}
+              index={index}
+              isAnalogMode={isAnalogMode}
+            />
           ))}
         </div>
       </div>

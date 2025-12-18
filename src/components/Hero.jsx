@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import FloatingChip from './FloatingChip'
+import profileImg from '../assets/images/profile.jpg'
 
 const Hero = () => {
   return (
@@ -58,7 +59,7 @@ const Hero = () => {
           className="mt-8"
         >
           <img
-            src="/profile.jpg"
+            src={profileImg}
             alt="Yohannes Kibrekidusan - Professional headshot"
             className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-neon-cyan shadow-lg"
             style={{
